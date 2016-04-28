@@ -70,6 +70,7 @@ router.post(userRoute, function(req, res) {
     var user = new User();
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
+    console.log(user.firstName);
 
     // Save the user
     user.save(function(err) {
@@ -106,6 +107,7 @@ router.put(userIdRoute, function(req, res) {
         if (err) {
             res.send(err);
         }
+
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
 
@@ -116,6 +118,18 @@ router.put(userIdRoute, function(req, res) {
             }
             res.json({ message: 'User updated' });
         });
+    });
+});
+
+// Delete User by ID
+router.delete(userIdRoute, function(req, res) {
+    User.remove({
+        _id: req.params.userId
+    }, function(err, user) {
+        if (err) {
+            res.send(err);
+        }
+        res.json({ message: 'Successfully deleted' });
     });
 });
 
