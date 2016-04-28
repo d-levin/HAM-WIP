@@ -16,10 +16,11 @@ Go to http://localhost:8080
 index.html will be served.
 
 Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com).
+Make sure to select x-www-form-urlencoded for the request body.
 
 COMMAND | RESULT
 --- | ---
-GET http://localhost:8080/routes/users/ | Returns all users in DB as a json object
-GET http://localhost:8080/routes/users/user_id | Returns the user with the specified ID
-PUT http://localhost:8080/routes/users/user_id | Updates the user with the specified ID
-POST http://localhost:8080/routes/users/ | Creates a new user
+GET http://localhost:8080/users/ | Returns all users in DB as a json object
+GET http://localhost:8080/users/user_id | Returns the user with the specified ID
+PUT http://localhost:8080/users/user_id | Updates the user with the specified ID
+POST http://localhost:8080/users/ | Creates a new user

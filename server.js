@@ -5,20 +5,16 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-/*----------  Models  ----------*/
-var User = require('./models/user');
-
-/*----------  Express Related  ----------*/
-
-var app = express();
-var router = express.Router();
-var port = process.env.PORT || 8080;
-
 /*----------  Setup App  ----------*/
+var port = process.env.PORT || 8080;
+var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 /*=====  End of Dependencies  ======*/
+
+/* Keep track of base directory to avoid long include-paths */
+global.__base = __dirname + '/';
 
 
 /*========================================
@@ -41,107 +37,21 @@ mongoose.connection.on('disconnect', function() {
 });
 /*=====  End of MongoDB database  ======*/
 
-/*=========================================
-=            Terminate Program            =
-=========================================*/
-/* Disconnect Mongoose when Node process terminates */
+/*
+ * Handles CTRL-C signal
+ * Disconnect Mongoose when Node process terminates
+ */
 process.on('SIGINT', function() {
     mongoose.connection.close(function() {
         console.log('Server terminated\nDisconnecting Mongoose connection');
         process.exit(0);
     });
 });
-/*=====  End of Terminate Program  ======*/
 
-/*==============================
-=            Routes            =
-==============================*/
-var userRoute = '/users';
-var userIdRoute = '/users/:userId';
+/* Initialize routes */
+routes = require('./routes')(app);
 
-// Initial page
-router.get('/', function(req, res) {
-    res.send('/index.html');
-});
-
-// Create a new User
-router.post(userRoute, function(req, res) {
-    var user = new User();
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName;
-    console.log(user.firstName);
-
-    // Save the user
-    user.save(function(err) {
-        if (err) {
-            res.send(err);
-        }
-        res.json({ message: 'User created' });
-    });
-});
-
-// Return all Users
-router.get(userRoute, function(req, res) {
-    User.find(function(err, users) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(users);
-    });
-});
-
-// Get User by ID
-router.get(userIdRoute, function(req, res) {
-    User.findById(req.params.userId, function(err, user) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(user);
-    });
-});
-
-// Update User by ID
-router.put(userIdRoute, function(req, res) {
-    User.findById(req.params.userId, function(err, user) {
-        if (err) {
-            res.send(err);
-        }
-
-        user.firstName = req.body.firstName;
-        user.lastName = req.body.lastName;
-
-        // Save the updated user
-        user.save(function(err) {
-            if (err) {
-                res.send(err);
-            }
-            res.json({ message: 'User updated' });
-        });
-    });
-});
-
-// Delete User by ID
-router.delete(userIdRoute, function(req, res) {
-    User.remove({
-        _id: req.params.userId
-    }, function(err, user) {
-        if (err) {
-            res.send(err);
-        }
-        res.json({ message: 'Successfully deleted' });
-    });
-});
-
-/*----------  Register Routes  ----------*/
-app.use('/routes', router);
-
-/*=====  End of Routes  ======*/
-
-
-/*========================================
-=            Start the server            =
-========================================*/
+/* Start the server */
 app.listen(port, function() {
     console.log('Listening on port ' + port);
 });
-/*=====  End of Start the server  ======*/
