@@ -14,13 +14,12 @@ var app = express();
 var router = express.Router();
 var port = process.env.PORT || 8080;
 
-/*----------  Body-Parser  ----------*/
+/*----------  Setup App  ----------*/
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 /*=====  End of Dependencies  ======*/
 
-/*----------  Static Route  ----------*/
-app.use(express.static(__dirname + '/public'));
 
 /*========================================
 =            MongoDB database            =
