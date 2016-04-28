@@ -14,7 +14,7 @@ npm start
 Go to http://localhost:8080
 index.html will be served.
 
-Try GET/POST/PUT requests by using something like Postman for Chrome.
+Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com).
 
 COMMAND | RESULT
 --- | ---
