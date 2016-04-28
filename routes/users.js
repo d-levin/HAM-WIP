@@ -11,7 +11,6 @@ module.exports = function(app) {
         var user = new User();
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
-        console.log(user.firstName);
 
         // Save the user
         user.save(function(err) {
