@@ -4,8 +4,9 @@
 npm install
 
 #### MongoDB
-Make sure the user running the program has read/write permissions
+* Make sure the user running the program has read/write permissions
 to the /models/db folder before running the program.
+* Start the mongod service and set --dbpath to /models/db
 
 #### Run server:
 npm start
