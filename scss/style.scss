@@ -1,18 +1,37 @@
 $green: #9bce7d;
 $light-teal: #72ac93;
 $teal: #699e87;
+$red: #bd0102;
+$gray: #6b6b6b;
 $transition: .15s ease;
 $default-font: 'Work Sans',
 sans-serif;
+$bold: 700;
+$normal: 400;
+$thin: 300;
 @mixin box-shadow-spread($offset-horizontal, $offset-vertical, $blur, $spread, $color) {
     -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
     -moz-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
     box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
 }
 
+@mixin box-shadow($offset-horizontal, $offset-vertical, $blur, $color) {
+    -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $color;
+    -moz-box-shadow: $offset-horizontal $offset-vertical $blur $color;
+    box-shadow: $offset-horizontal $offset-vertical $blur $color;
+}
+
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
     border-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-radius-top($radius) {
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
     background-clip: padding-box;
 }
 
@@ -23,11 +42,15 @@ sans-serif;
 
 html,
 body {
-    background-color: $light-teal;
+    background-color: $teal;
 }
 
 #header {
     background-color: $green;
+}
+
+#main {
+    background-color: $light-teal;
 }
 
 #footer {
@@ -42,8 +65,8 @@ body {
 =            Layout            =
 ==============================*/
 
-#header {
-    @include box-shadow-spread(0, 0.125em, 0.1875em, 0, rgba(0, 0, 0, .2));
+.grid {
+    @include box-shadow(0, 0, 1em, rgba(0, 0, 0, .15));
 }
 
 .flex-container {
@@ -55,11 +78,21 @@ body {
     padding: 2.5em;
 }
 
+.type {
+    @include box-shadow(0, 0, 0.8em, rgba(0, 0, 0, .15));
+}
+
+#header {
+    @include box-shadow-spread(0, 0.125em, 0.1875em, 0, rgba(0, 0, 0, .2));
+    position: relative;
+}
+
 #footer {
+    border-top: 0.0625em solid rgba(0, 0, 0, 0.3);
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 1em
+    padding: 1em;
 }
 
 
@@ -70,7 +103,7 @@ body {
 =            Alignment            =
 =================================*/
 
-.text-centered {
+.centered {
     text-align: center;
 }
 
@@ -89,6 +122,7 @@ body {
 #nav {
     a {
         text-decoration: none;
+        font-weight: $thin;
         color: #ffffff;
         letter-spacing: 0.0625em;
         border: 0.0625em solid rgba(255, 255, 255, 0);
@@ -108,7 +142,7 @@ body {
 
 h3 {
     font-size: 2.5em;
-    font-weight: 700;
+    font-weight: $bold;
 }
 
 .project-title h3 {
@@ -116,21 +150,109 @@ h3 {
 }
 
 h4 {
-    font-size: 1.8em;
-    font-weight: 400;
+    padding: 0.5em;
+    font-size: 1.4em;
+    font-weight: $normal;
+}
+
+.type h4 {
+    background-color: $green;
+    color: #ffffff;
+    @include border-radius-top(0.3125em);
+    @include box-shadow-spread(0, 0.125em, 0.1875em, 0, rgba(0, 0, 0, .2));
 }
 
 p {
     font-size: 1em;
-    font-weight: 300;
+    font-weight: $thin;
 }
 
 #footer p {
     font-size: 0.8em;
+    color: #ffffff;
 }
 
 
 /*=====  End of Typography  ======*/
+
+
+/*===================================
+=            Form Styles            =
+===================================*/
+
+.form-container {
+    padding: 1em;
+}
+
+.button-container {
+    padding: 0 1em;
+}
+
+form {
+    fieldset {
+        li:first-child {
+            padding-top: 0;
+        }
+        li {
+            padding: 0.2em 0;
+            label {
+                display: block;
+                padding: 0.2em 0;
+                color: #ffffff;
+            }
+            input {
+                width: 100%;
+                font-size: 0.9em;
+                color: $gray;
+                padding: 0.8em 0.3em;
+                border: none;
+                font-family: $default-font;
+                @include border-radius(0.125em);
+            }
+            input:focus {
+                outline: none;
+                @include box-shadow(0, 0, 0.1875em, rgba(0, 0, 0, 0.5));
+            }
+        }
+        li:last-child {
+            padding-top: 1em;
+        }
+    }
+}
+
+.button {
+    font-size: 1em;
+    font-weight: bold;
+    font-weight: $thin;
+    @include border-radius(0.125em);
+    padding: 0.625em 1em;
+    transition: all .1s ease;
+    text-align: center;
+    color: #ffffff;
+    border: 0.0625em solid #ffffff;
+    background-color: rgba(0, 0, 0, .00);
+}
+
+.button:hover {
+    color: $red;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.button:active {
+    transform: translateY(0.125em);
+}
+
+.button-container {
+    margin-top: 1em;
+}
+
+.wide {
+    width: 100%;
+}
+
+
+/*=====  End of Form Styles  ======*/
 
 
 /*===================================

@@ -3,10 +3,13 @@
 ======================================*/
 html,
 body {
-  background-color: #72ac93; }
+  background-color: #699e87; }
 
 #header {
   background-color: #9bce7d; }
+
+#main {
+  background-color: #72ac93; }
 
 #footer {
   background-color: #699e87; }
@@ -15,10 +18,10 @@ body {
 /*==============================
 =            Layout            =
 ==============================*/
-#header {
-  -webkit-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2); }
+.grid {
+  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.15); }
 
 .flex-container {
   display: flex;
@@ -27,7 +30,19 @@ body {
 .container-pad {
   padding: 2.5em; }
 
+.type {
+  -webkit-box-shadow: 0 0 0.8em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.8em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.8em rgba(0, 0, 0, 0.15); }
+
+#header {
+  -webkit-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
+  position: relative; }
+
 #footer {
+  border-top: 0.0625em solid rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -37,7 +52,7 @@ body {
 /*=================================
 =            Alignment            =
 =================================*/
-.text-centered {
+.centered {
   text-align: center; }
 
 /*=====  End of Alignment  ======*/
@@ -49,6 +64,7 @@ body {
 
 #nav a {
   text-decoration: none;
+  font-weight: 300;
   color: #ffffff;
   letter-spacing: 0.0625em;
   border: 0.0625em solid rgba(255, 255, 255, 0);
@@ -74,17 +90,97 @@ h3 {
   color: #ffffff; }
 
 h4 {
-  font-size: 1.8em;
+  padding: 0.5em;
+  font-size: 1.4em;
   font-weight: 400; }
+
+.type h4 {
+  background-color: #9bce7d;
+  color: #ffffff;
+  -webkit-border-top-left-radius: 0.3125em;
+  border-top-left-radius: 0.3125em;
+  -webkit-border-top-right-radius: 0.3125em;
+  border-top-right-radius: 0.3125em;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2); }
 
 p {
   font-size: 1em;
   font-weight: 300; }
 
 #footer p {
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  color: #ffffff; }
 
 /*=====  End of Typography  ======*/
+/*===================================
+=            Form Styles            =
+===================================*/
+.form-container {
+  padding: 1em; }
+
+.button-container {
+  padding: 0 1em; }
+
+form fieldset li:first-child {
+  padding-top: 0; }
+
+form fieldset li {
+  padding: 0.2em 0; }
+  form fieldset li label {
+    display: block;
+    padding: 0.2em 0;
+    color: #ffffff; }
+  form fieldset li input {
+    width: 100%;
+    font-size: 0.9em;
+    color: #6b6b6b;
+    padding: 0.8em 0.3em;
+    border: none;
+    font-family: "Work Sans", sans-serif;
+    -webkit-border-radius: 0.125em;
+    border-radius: 0.125em;
+    background-clip: padding-box; }
+  form fieldset li input:focus {
+    outline: none;
+    -webkit-box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5); }
+
+form fieldset li:last-child {
+  padding-top: 1em; }
+
+.button {
+  font-size: 1em;
+  font-weight: bold;
+  font-weight: 300;
+  -webkit-border-radius: 0.125em;
+  border-radius: 0.125em;
+  background-clip: padding-box;
+  padding: 0.625em 1em;
+  transition: all .1s ease;
+  text-align: center;
+  color: #ffffff;
+  border: 0.0625em solid #ffffff;
+  background-color: transparent; }
+
+.button:hover {
+  color: #bd0102;
+  background-color: #ffffff;
+  cursor: pointer; }
+
+.button:active {
+  transform: translateY(0.125em); }
+
+.button-container {
+  margin-top: 1em; }
+
+.wide {
+  width: 100%; }
+
+/*=====  End of Form Styles  ======*/
 /*===================================
 =            List Styles            =
 ===================================*/
