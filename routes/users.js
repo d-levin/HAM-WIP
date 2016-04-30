@@ -1,3 +1,5 @@
+/* Routes for Users */
+
 module.exports = function(app) {
 
     var express = require('express');
@@ -11,6 +13,7 @@ module.exports = function(app) {
         var user = new User();
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
+        user.created = new Date();
 
         // Save the user
         user.save(function(err) {

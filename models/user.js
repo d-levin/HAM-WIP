@@ -1,3 +1,5 @@
+/* Model for a User */
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -12,7 +14,13 @@ var userSchema = new Schema({
     state: String,
     zip: Number,
     pwHash: String,
-    pwSalt: String
+    pwSalt: String,
+    created: Date,
+    controllers: [{
+        type: Schema.ObjectId,
+        ref: 'Controller',
+        unique: true
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);

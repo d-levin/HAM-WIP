@@ -1,0 +1,152 @@
+$green: #9bce7d;
+$light-teal: #72ac93;
+$teal: #699e87;
+$transition: .15s ease;
+$default-font: 'Work Sans',
+sans-serif;
+@mixin box-shadow-spread($offset-horizontal, $offset-vertical, $blur, $spread, $color) {
+    -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+    -moz-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+    box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+
+
+/*======================================
+=            Section Colors            =
+======================================*/
+
+html,
+body {
+    background-color: $light-teal;
+}
+
+#header {
+    background-color: $green;
+}
+
+#footer {
+    background-color: $teal;
+}
+
+
+/*=====  End of Section Colors  ======*/
+
+
+/*==============================
+=            Layout            =
+==============================*/
+
+#header {
+    @include box-shadow-spread(0, 0.125em, 0.1875em, 0, rgba(0, 0, 0, .2));
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.container-pad {
+    padding: 2.5em;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1em
+}
+
+
+/*=====  End of Layout  ======*/
+
+
+/*=================================
+=            Alignment            =
+=================================*/
+
+.text-centered {
+    text-align: center;
+}
+
+
+/*=====  End of Alignment  ======*/
+
+
+/*==================================
+=            Typography            =
+==================================*/
+
+body {
+    font-family: $default-font;
+}
+
+#nav {
+    a {
+        text-decoration: none;
+        color: #ffffff;
+        letter-spacing: 0.0625em;
+        border: 0.0625em solid rgba(255, 255, 255, 0);
+        padding: 0.625em;
+    }
+    a:hover {
+        border: 0.0625em solid rgba(255, 255, 255, .6);
+        background-color: rgba(255, 255, 255, .05);
+        transition: $transition;
+        @include border-radius(0.125em);
+    }
+    a:active {
+        position: relative;
+        top: 0.0625em;
+    }
+}
+
+h3 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.project-title h3 {
+    color: #ffffff;
+}
+
+h4 {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+#footer p {
+    font-size: 0.8em;
+}
+
+
+/*=====  End of Typography  ======*/
+
+
+/*===================================
+=            List Styles            =
+===================================*/
+
+#header {
+    #nav {
+        ul {
+            text-align: right;
+            li {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+
+/*=====  End of List Styles  ======*/
