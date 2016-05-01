@@ -145,19 +145,20 @@ h3 {
     font-weight: $bold;
 }
 
-.project-title h3 {
-    color: #ffffff;
-}
-
 h4 {
     padding: 0.5em;
     font-size: 1.4em;
     font-weight: $normal;
 }
 
+.project-title h3,
+.type h4 {
+    color: #ffffff;
+    text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1);
+}
+
 .type h4 {
     background-color: $green;
-    color: #ffffff;
     @include border-radius-top(0.3125em);
     @include box-shadow-spread(0, 0.125em, 0.1875em, 0, rgba(0, 0, 0, .2));
 }

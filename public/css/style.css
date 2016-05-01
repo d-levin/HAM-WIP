@@ -86,17 +86,18 @@ h3 {
   font-size: 2.5em;
   font-weight: 700; }
 
-.project-title h3 {
-  color: #ffffff; }
-
 h4 {
   padding: 0.5em;
   font-size: 1.4em;
   font-weight: 400; }
 
+.project-title h3,
+.type h4 {
+  color: #ffffff;
+  text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1); }
+
 .type h4 {
   background-color: #9bce7d;
-  color: #ffffff;
   -webkit-border-top-left-radius: 0.3125em;
   border-top-left-radius: 0.3125em;
   -webkit-border-top-right-radius: 0.3125em;
