@@ -15,7 +15,10 @@
         <div class="col-1-1 flex-container container-pad" id="header">
             <div class="col-1-2">
                 <div class="project-title">
-                    <h3>HAM-WIP</h3>
+                    <h3><svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M23 11.01L18 11c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-9c0-.55-.45-.99-1-.99zM23 20h-5v-7h5v7zM20 2H2C.89 2 0 2.89 0 4v12c0 1.1.89 2 2 2h7v2H7v2h8v-2h-2v-2h2v-2H2V4h18v5h2V4c0-1.11-.9-2-2-2zm-8.03 7L11 6l-.97 3H7l2.47 1.76-.94 2.91 2.47-1.8 2.47 1.8-.94-2.91L15 9h-3.03z" />
+                    </svg>HAM-WIP</h3>
                 </div>
             </div>
             <div class="col-1-2 push-right">
@@ -33,10 +36,10 @@
                 <div class="type">
                     <h4 class="centered">Users</h4>
                     <div class="button-container centered">
-                        <button class="button wide" id="getusers" onclick="getUsers()"><span>Get all users</span></button>
+                        <button class="button wide-button" id="getusers" onclick="getData('users')"><span>Get all users</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="()">
+                        <form onSubmit="">
                             <fieldset>
                                 <ul>
                                     <li>
@@ -64,17 +67,17 @@
                             </fieldset>
                         </form>
                     </div>
-                    <div id="results-container-users"></div>
+                    <div id="results-container-users" class="results-container"></div>
                 </div>
             </div>
             <div class="col-1-3">
                 <div class="type">
                     <h4 class="centered">Controllers</h4>
                     <div class="button-container centered">
-                        <button class="button wide" formmethod="get"><span>Get all controllers</span></button>
+                        <button class="button wide-button" id="getcontrollers" onclick="getData('controllers')"><span>Get all controllers</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="()">
+                        <form onSubmit="">
                             <fieldset>
                                 <ul>
                                     <li>
@@ -98,16 +101,17 @@
                             </fieldset>
                         </form>
                     </div>
+                    <div id="results-container-controllers" class="results-container"></div>
                 </div>
             </div>
             <div class="col-1-3">
                 <div class="type">
                     <h4 class="centered">Devices</h4>
                     <div class="button-container centered">
-                        <button class="button wide" formmethod="get"><span>Get all devices</span></button>
+                        <button class="button wide-button" id="getdevices" onclick="getData('devices')"><span>Get all devices</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="()">
+                        <form onSubmit="">
                             <fieldset>
                                 <ul>
                                     <li>
@@ -135,6 +139,7 @@
                             </fieldset>
                         </form>
                     </div>
+                    <div id="results-container-devices" class="results-container"></div>
                 </div>
             </div>
         </div>
@@ -144,10 +149,9 @@
     </div>
     <script>
     // Get and list all users
-    function getUsers() {
+    function getData(path) {
         var xmlhttp = new XMLHttpRequest();
-        var url = "/users";
-
+        var url = path;
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 myFunction(xmlhttp.responseText);
@@ -156,21 +160,22 @@
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
 
+
         function myFunction(response) {
             var obj = JSON.parse(response);
             var i;
-            var out = "<ul>";
+            var out = "<table>";
             for (i = 0; i < obj.length; i++) {
-                out += "<li>User " + (i + 1) + ":</li>";
+                out += "<tr><th>Item " + (i + 1) + ":</th></tr>";
                 for (var key in obj[i]) {
                     if (key === "__v") {
                         continue;
                     }
-                    out += "<li>" + key + ": " + obj[i][key] + "</li>";
+                    out += "<tr><td>" + key + "</td><td>" + obj[i][key] + "</td></tr>";
                 }
             }
-            out += "</ul>";
-            document.getElementById("results-container-users").innerHTML = out;
+            out += "</table>";
+            document.getElementById("results-container-" + path).innerHTML = out;
         }
     }
     </script>

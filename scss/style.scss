@@ -65,8 +65,15 @@ body {
 =            Layout            =
 ==============================*/
 
+html,
+body {
+    height: 100%;
+}
+
 .grid {
     @include box-shadow(0, 0, 1em, rgba(0, 0, 0, .15));
+    min-height: 100%;
+    position: relative;
 }
 
 .flex-container {
@@ -76,6 +83,10 @@ body {
 
 .container-pad {
     padding: 2.5em;
+}
+
+.project-title svg {
+    padding-right: 0.8em;
 }
 
 .type {
@@ -89,7 +100,7 @@ body {
 
 #main {
     /* Padding to clear footer */
-    padding-bottom: 10em;
+    padding-bottom: 2.9375em;
 }
 
 #footer {
@@ -97,6 +108,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
     padding: 1em;
 }
 
@@ -194,10 +206,6 @@ p {
     padding: 0 1em;
 }
 
-#results-container-users {
-    padding: 0 1em;
-}
-
 form {
     fieldset {
         li:first-child {
@@ -214,7 +222,7 @@ form {
                 width: 100%;
                 font-size: 0.9em;
                 color: $gray;
-                padding: 0.8em 0.3em;
+                padding: 0.8em 0.4em;
                 border: none;
                 font-family: $default-font;
                 @include border-radius(0.125em);
@@ -257,12 +265,42 @@ form {
     margin-top: 1em;
 }
 
-.wide {
+.wide-button {
     width: 100%;
 }
 
 
 /*=====  End of Form Styles  ======*/
+
+
+/*======================================
+=            Results Styles            =
+======================================*/
+
+.results-container {
+    padding: 1em;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    table {
+        th {
+            text-align: left;
+            padding: 0.5em 0 0.2em 0;
+            font-weight: $normal;
+        }
+        tr:first-child th {
+            padding-top: 0;
+        }
+        tr {
+            td {
+                font-weight: $thin;
+            }
+        }
+    }
+}
+
+
+/*=====  End of Results Styles  ======*/
 
 
 /*===================================

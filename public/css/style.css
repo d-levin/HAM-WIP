@@ -18,10 +18,16 @@ body {
 /*==============================
 =            Layout            =
 ==============================*/
+html,
+body {
+  height: 100%; }
+
 .grid {
   -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+  min-height: 100%;
+  position: relative; }
 
 .flex-container {
   display: flex;
@@ -29,6 +35,9 @@ body {
 
 .container-pad {
   padding: 2.5em; }
+
+.project-title svg {
+  padding-right: 0.8em; }
 
 .type {
   -webkit-box-shadow: 0 0 0.8em rgba(0, 0, 0, 0.15);
@@ -43,13 +52,14 @@ body {
 
 #main {
   /* Padding to clear footer */
-  padding-bottom: 10em; }
+  padding-bottom: 2.9375em; }
 
 #footer {
   border-top: 0.0625em solid rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   padding: 1em; }
 
 /*=====  End of Layout  ======*/
@@ -129,9 +139,6 @@ p {
 .button-container {
   padding: 0 1em; }
 
-#results-container-users {
-  padding: 0 1em; }
-
 form fieldset li:first-child {
   padding-top: 0; }
 
@@ -145,7 +152,7 @@ form fieldset li {
     width: 100%;
     font-size: 0.9em;
     color: #6b6b6b;
-    padding: 0.8em 0.3em;
+    padding: 0.8em 0.4em;
     border: none;
     font-family: "Work Sans", sans-serif;
     -webkit-border-radius: 0.125em;
@@ -185,10 +192,28 @@ form fieldset li:last-child {
 .button-container {
   margin-top: 1em; }
 
-.wide {
+.wide-button {
   width: 100%; }
 
 /*=====  End of Form Styles  ======*/
+/*======================================
+=            Results Styles            =
+======================================*/
+.results-container {
+  padding: 1em;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff; }
+  .results-container table th {
+    text-align: left;
+    padding: 0.5em 0 0.2em 0;
+    font-weight: 400; }
+  .results-container table tr:first-child th {
+    padding-top: 0; }
+  .results-container table tr td {
+    font-weight: 300; }
+
+/*=====  End of Results Styles  ======*/
 /*===================================
 =            List Styles            =
 ===================================*/
