@@ -11,7 +11,7 @@ gulp.task('sass', function() {
         // Find all `.scss` files from the `scss/` folder
         .src(input)
         // Run Sass on those files
-        .pipe(sass({ outputStyle: 'extended' }).on('error', sass.logError))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         // Write the resulting CSS in the output folder
         .pipe(gulp.dest(output));
 });

@@ -166,7 +166,7 @@
             var i;
             var out = "<table>";
             for (i = 0; i < obj.length; i++) {
-                out += "<tr><th>Item " + (i + 1) + ":</th></tr>";
+                out += "<tr><th onclick=\"alert('hello')\">Item " + (i + 1) + ":</th></tr>";
                 for (var key in obj[i]) {
                     if (key === "__v") {
                         continue;

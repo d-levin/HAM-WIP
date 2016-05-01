@@ -15,6 +15,12 @@ $thin: 300;
     box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
 }
 
+@mixin box-shadow-inset($offset-horizontal, $offset-vertical, $blur, $color) {
+    -webkit-box-shadow: inset $offset-horizontal $offset-vertical $blur $color;
+    -moz-box-shadow: inset $offset-horizontal $offset-vertical $blur $color;
+    box-shadow: inset $offset-horizontal $offset-vertical $blur $color;
+}
+
 @mixin box-shadow($offset-horizontal, $offset-vertical, $blur, $color) {
     -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $color;
     -moz-box-shadow: $offset-horizontal $offset-vertical $blur $color;
@@ -278,6 +284,7 @@ form {
 ======================================*/
 
 .results-container {
+    @include box-shadow-inset(0, 0, 0.0625em, #000000);
     padding: 1em;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.1);
