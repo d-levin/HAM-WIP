@@ -160,9 +160,9 @@ form fieldset li {
     background-clip: padding-box; }
   form fieldset li input:focus {
     outline: none;
-    -webkit-box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 0.1875em rgba(0, 0, 0, 0.5); }
+    -webkit-box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.5); }
 
 form fieldset li:last-child {
   padding-top: 1em; }
