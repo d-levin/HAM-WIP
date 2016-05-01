@@ -33,7 +33,7 @@
                 <div class="type">
                     <h4 class="centered">Users</h4>
                     <div class="button-container centered">
-                        <button class="button wide" formmethod="get" onclick="window.location.href='/users/'"><span>Get all users</span></button>
+                        <button class="button wide" id="getusers" onclick="getUsers()"><span>Get all users</span></button>
                     </div>
                     <div class="form-container">
                         <form onSubmit="()">
@@ -64,6 +64,7 @@
                             </fieldset>
                         </form>
                     </div>
+                    <div id="results-container-users"></div>
                 </div>
             </div>
             <div class="col-1-3">
@@ -141,6 +142,38 @@
             <p>Created in 2016 by Dennis Levin, Harish Bajaj, and Matt Jordan</p>
         </div>
     </div>
+    <script>
+    // Get and list all users
+    function getUsers() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "/users";
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                myFunction(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        function myFunction(response) {
+            var obj = JSON.parse(response);
+            var i;
+            var out = "<ul>";
+            for (i = 0; i < obj.length; i++) {
+                out += "<li>User " + (i + 1) + ":</li>";
+                for (var key in obj[i]) {
+                    if (key === "__v") {
+                        continue;
+                    }
+                    out += "<li>" + key + ": " + obj[i][key] + "</li>";
+                }
+            }
+            out += "</ul>";
+            document.getElementById("results-container-users").innerHTML = out;
+        }
+    }
+    </script>
 </body>
 
 </html>

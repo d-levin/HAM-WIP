@@ -41,6 +41,10 @@ body {
   box-shadow: 0 0.125em 0.1875em 0 rgba(0, 0, 0, 0.2);
   position: relative; }
 
+#main {
+  /* Padding to clear footer */
+  padding-bottom: 10em; }
+
 #footer {
   border-top: 0.0625em solid rgba(0, 0, 0, 0.3);
   position: absolute;
@@ -123,6 +127,9 @@ p {
   padding: 1em; }
 
 .button-container {
+  padding: 0 1em; }
+
+#results-container-users {
   padding: 0 1em; }
 
 form fieldset li:first-child {
