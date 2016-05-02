@@ -15,6 +15,11 @@ module.exports = function(app) {
         user.lastName = req.body.lastName;
         user.email = req.body.email;
         user.phone = req.body.phone;
+        user.country = req.body.country;
+        user.street1 = req.body.street1;
+        user.street2 = req.body.street2;
+        user.state = req.body.state;
+        user.zip = req.body.zip;
         user.created = new Date();
 
         // Save the user
@@ -55,6 +60,13 @@ module.exports = function(app) {
 
             user.firstName = req.body.firstName;
             user.lastName = req.body.lastName;
+            user.email = req.body.email;
+            user.phone = req.body.phone;
+            user.country = req.body.country;
+            user.street1 = req.body.street1;
+            user.street2 = req.body.street2;
+            user.state = req.body.state;
+            user.zip = req.body.zip;
 
             // Save the updated user
             user.save(function(err) {
