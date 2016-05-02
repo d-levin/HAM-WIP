@@ -306,6 +306,9 @@ form {
             td {
                 font-weight: $thin;
             }
+            td:first-child {
+                padding-right: 1em;
+            }
         }
     }
 }
