@@ -13,8 +13,9 @@ module.exports = function(app) {
         var controller = new Controller();
         controller.make = req.body.make;
         controller.model = req.body.model;
+        controller.version = req.body.version;
         controller.created = new Date();
-        contoller.userId = req.body.userId;
+        controller.userId = req.body.userId;
 
         // Save the Controller
         controller.save(function(err) {
@@ -37,7 +38,7 @@ module.exports = function(app) {
 
     // Get Controller by ID
     controllersRouter.get(controllerIdRoute, function(req, res) {
-        Controller.findById(req.params.userId, function(err, controller) {
+        Controller.findById(req.params.controllerId, function(err, controller) {
             if (err) {
                 res.send(err);
             }
@@ -47,7 +48,7 @@ module.exports = function(app) {
 
     // Update Controller by ID
     controllersRouter.put(controllerIdRoute, function(req, res) {
-        Controller.findById(req.params.userId, function(err, controller) {
+        Controller.findById(req.params.controllerId, function(err, controller) {
             if (err) {
                 res.send(err);
             }
