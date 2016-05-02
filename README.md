@@ -20,21 +20,21 @@ to the /models/db folder before running the program.
 * SimpleGrid responsive grid system is used
 * Client-side logic in public/js/
 
-COMMAND | RESULT
---- | ---
-GET http://localhost:8080/ | Returns index.html
-GET http://localhost:8080/users/ | Returns all users in DB as a json object
-GET http://localhost:8080/users/user_id | Returns the user with the specified ID
-PUT http://localhost:8080/users/user_id | Updates the user with the specified ID
-POST http://localhost:8080/users/ | Creates a new user
-GET http://localhost:8080/controllers/ | Returns all controllers in DB as a json object
-GET http://localhost:8080/controllers/controller_id | Returns the controller with the specified ID
-PUT http://localhost:8080/controllers/controller_id | Updates the controller with the specified ID
-POST http://localhost:8080/controllers/ | Creates a new controller
-GET http://localhost:8080/devices/ | Returns all devices in DB as a json object
-GET http://localhost:8080/devices/device_id | Returns the device with the specified ID
-PUT http://localhost:8080/devices/device_id | Updates the device with the specified ID
-POST http://localhost:8080/devices/ | Creates a new device
+HTTP VERB | PATH | ACTION | RETURN VALUE
+--- | --- | --- | ---
+GET | / | Retrieve root | index.html
+GET | /users/ | Retrieve all users | JSON object
+GET | /users/:userId | Retrieve user with specified ID | JSON object
+PUT | /users/:userId | Update user with specified ID | 
+POST | /users/ | Creates a new user | 
+GET | /controllers/ | Retrieve all controllers | JSON object
+GET | /controllers/:controllerId | Retrieve controller with specified ID | JSON object
+PUT | /controllers/:controllerId | Update controller with specified ID |
+POST | /controllers/ | Creates a new controller | 
+GET | /devices/ | Retrieves all devices | JSON object
+GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
+PUT | /devices/:deviceId | Updates device with specified ID | 
+POST | /devices/ | Creates a new device |
 
 #### Requirements
 * A modern browser
