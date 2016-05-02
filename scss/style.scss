@@ -295,6 +295,10 @@ form {
             padding: 0.5em 0 0.2em 0;
             font-weight: $normal;
         }
+        th:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
         tr:first-child th {
             padding-top: 0;
         }

@@ -13,6 +13,8 @@ module.exports = function(app) {
         var user = new User();
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
+        user.email = req.body.email;
+        user.phone = req.body.phone;
         user.created = new Date();
 
         // Save the user

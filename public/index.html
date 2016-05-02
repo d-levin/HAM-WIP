@@ -34,12 +34,12 @@
         <div class="col-1-1 container-pad" id="main">
             <div class="col-1-3">
                 <div class="type">
-                    <h4 class="centered">Users</h4>
+                    <h4 class="centered" id="users-block" data="">Users</h4>
                     <div class="button-container centered">
                         <button class="button wide-button" id="getusers" onclick="getData('users')"><span>Get all users</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="">
+                        <form>
                             <fieldset>
                                 <ul>
                                     <li>
@@ -59,9 +59,9 @@
                                         <input type="text" name="phone" placeholder="Enter phone number">
                                     </li>
                                     <li class="centered">
-                                        <button class="button" formmethod="post"><span>Create</span></button>
-                                        <button class="button" formmethod="put"><span>Update</span></button>
-                                        <button class="button" formmethod="delete"><span>Delete</span></button>
+                                        <button class="button" type="button" onclick="createUser()"><span>Create</span></button>
+                                        <button class="button" type="button" onclick="updateUser()"><span>Update</span></button>
+                                        <button class="button" type="button" onclick="deleteUser()"><span>Delete</span></button>
                                     </li>
                                 </ul>
                             </fieldset>
@@ -77,7 +77,7 @@
                         <button class="button wide-button" id="getcontrollers" onclick="getData('controllers')"><span>Get all controllers</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="">
+                        <form>
                             <fieldset>
                                 <ul>
                                     <li>
@@ -93,9 +93,9 @@
                                         <input type="text" name="version" placeholder="Enter version">
                                     </li>
                                     <li class="centered">
-                                        <button class="button" formmethod="post"><span>Create</span></button>
-                                        <button class="button" formmethod="put"><span>Update</span></button>
-                                        <button class="button" formmethod="delete"><span>Delete</span></button>
+                                        <button class="button" type="button" onclick="createController()"><span>Create</span></button>
+                                        <button class="button" type="button" onclick="updateController()"><span>Update</span></button>
+                                        <button class="button" type="button" onclick="deleteController()"><span>Delete</span></button>
                                     </li>
                                 </ul>
                             </fieldset>
@@ -111,7 +111,7 @@
                         <button class="button wide-button" id="getdevices" onclick="getData('devices')"><span>Get all devices</span></button>
                     </div>
                     <div class="form-container">
-                        <form onSubmit="">
+                        <form>
                             <fieldset>
                                 <ul>
                                     <li>
@@ -131,9 +131,9 @@
                                         <input type="text" name="type" placeholder="Enter type">
                                     </li>
                                     <li class="centered">
-                                        <button class="button" formmethod="post"><span>Create</span></button>
-                                        <button class="button" formmethod="put"><span>Update</span></button>
-                                        <button class="button" formmethod="delete"><span>Delete</span></button>
+                                        <button class="button" type="button" onclick="createDevice()"><span>Create</span></button>
+                                        <button class="button" type="button" onclick="updateDevice()"><span>Update</span></button>
+                                        <button class="button" type="button" onclick="deleteDevice()"><span>Delete</span></button>
                                     </li>
                                 </ul>
                             </fieldset>
@@ -148,36 +148,138 @@
         </div>
     </div>
     <script>
-    // Get and list all users
+    // Get and list all items
     function getData(path) {
         var xmlhttp = new XMLHttpRequest();
         var url = path;
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                myFunction(xmlhttp.responseText);
+                listItems(xmlhttp.responseText, path);
             }
         }
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
+    };
 
-
-        function myFunction(response) {
-            var obj = JSON.parse(response);
-            var i;
-            var out = "<table>";
-            for (i = 0; i < obj.length; i++) {
-                out += "<tr><th onclick=\"alert('hello')\">Item " + (i + 1) + ":</th></tr>";
-                for (var key in obj[i]) {
-                    if (key === "__v") {
-                        continue;
-                    }
-                    out += "<tr><td>" + key + "</td><td>" + obj[i][key] + "</td></tr>";
+    // Populates the form
+    function listItems(response, path) {
+        var obj = JSON.parse(response);
+        var i;
+        var out = "<table>";
+        for (i = 0; i < obj.length; i++) {
+            out += "<tr><th onclick=\"getUserById(this)\" data=\"" + obj[i]['_id'] + "\">Item " + (i + 1) + ":</th></tr>";
+            for (var key in obj[i]) {
+                if (key === "__v" || key === "_id" || key === "created") {
+                    continue;
                 }
+                out += "<tr><td>" + key + "</td><td>" + obj[i][key] + "</td></tr>";
             }
-            out += "</table>";
-            document.getElementById("results-container-" + path).innerHTML = out;
         }
+        out += "</table>";
+        document.getElementById("results-container-" + path).innerHTML = out;
+    };
+
+    // Retrieves user with given ID
+    function getUserById(element) {
+        var id = element.getAttribute('data');
+        var xmlhttp = new XMLHttpRequest();
+        var url = 'users/' + id;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                populateUserForm(xmlhttp.responseText);
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    };
+
+    // Parses a response object into the form
+    function populateUserForm(response) {
+        var obj = JSON.parse(response);
+        if (obj == null) return;
+
+        // Clear all fields first
+        clearUserForm();
+
+        // Populate the fields unless undefined
+        if (obj['firstName'] || '') {
+            document.getElementsByName('firstName')[0].value = obj['firstName'];
+        }
+        if (obj['lastName'] || '') {
+            document.getElementsByName('lastName')[0].value = obj['lastName'];
+        }
+        if (obj['email'] || '') {
+            document.getElementsByName('email')[0].value = obj['email'];
+        }
+        if (obj['phone'] || '') {
+            document.getElementsByName('phone')[0].value = obj['phone'];
+        }
+
+        // Save the ID for future operations
+        document.getElementById('users-block').setAttribute('data', obj['_id']);
+    };
+
+    function clearUserForm() {
+        document.getElementsByName('firstName')[0].value = '';
+        document.getElementsByName('lastName')[0].value = '';
+        document.getElementsByName('phone')[0].value = '';
+        document.getElementsByName('email')[0].value = '';
+        document.getElementById('users-block').setAttribute('data', '');
     }
+
+    function createUser() {
+        var params = "";
+        // All fields are required
+        if (document.getElementsByName('firstName')[0].value.trim() !== "" && document.getElementsByName('lastName')[0].value.trim() !== "" && document.getElementsByName('phone')[0].value.trim() !== "" && document.getElementsByName('email')[0].value.trim() !== "") {
+            params += 'firstName=' + document.getElementsByName('firstName')[0].value.trim() + '&';
+            params += 'lastName=' + document.getElementsByName('lastName')[0].value.trim() + '&';
+            params += 'phone=' + document.getElementsByName('phone')[0].value.trim() + '&';
+            params += 'email=' + document.getElementsByName('email')[0].value.trim();
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", 'users/', true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(params);
+            alert('User created!');
+            clearUserForm();
+        } else {
+            alert('All fields are mandatory!');
+        }
+    };
+
+    function updateUser() {
+        var id = document.getElementById('users-block').getAttribute('data');
+        if (!id) {
+            alert('Select a user');
+            return;
+        }
+        var params = "";
+        params += 'firstName=' + document.getElementsByName('firstName')[0].value.trim() + '&';
+        params += 'lastName=' + document.getElementsByName('lastName')[0].value.trim() + '&';
+        params += 'phone=' + document.getElementsByName('phone')[0].value.trim() + '&';
+        params += 'email=' + document.getElementsByName('email')[0].value.trim();
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("PUT", 'users/' + id, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(params);
+        alert('User updated!');
+        clearUserForm();
+    };
+
+    function deleteUser() {
+        var id = document.getElementById('users-block').getAttribute('data');
+        if (!id) {
+            alert('Select a user');
+            return;
+        }
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("DELETE", 'users/' + id, true);
+        xmlhttp.send();
+        alert('User deleted!');
+        clearUserForm();
+    };
     </script>
 </body>
 
