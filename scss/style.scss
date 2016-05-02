@@ -267,6 +267,10 @@ form {
     transform: translateY(0.125em);
 }
 
+.button:focus {
+    outline: none;
+}
+
 .button-container {
     margin-top: 1em;
 }
