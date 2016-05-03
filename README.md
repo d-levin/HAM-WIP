@@ -19,7 +19,7 @@ to the /models/db folder before running the program.
 * Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
 * SimpleGrid responsive grid system is used
 * Client-side logic in public/js/
-* To insert test data, run 'node fakedata.js' from the /dev/ directory
+* To insert test data, run 'node fake-data-generator.js' from the /dev/ directory
 
 HTTP VERB | PATH | ACTION | RETURN VALUE
 --- | --- | --- | ---
