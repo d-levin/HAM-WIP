@@ -2,7 +2,8 @@
 
 var mongoose = require('mongoose');
 
-var CONNECTION_STRING = 'localhost:27017';
+// String after port specifies which db to use on the given server
+var CONNECTION_STRING = 'localhost:27017/ham-wip';
 var connection = mongoose.connect(CONNECTION_STRING);
 
 mongoose.connection.on('connected', function() {
