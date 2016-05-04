@@ -11,6 +11,7 @@ module.exports = function(app) {
     // Create a new User
     usersRouter.post('/', function(req, res) {
         var user = new User();
+        user.username = req.body.username;
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
         user.email = req.body.email;
@@ -58,6 +59,7 @@ module.exports = function(app) {
                 res.send(err);
             }
 
+            user.username = req.body.username;
             user.firstName = req.body.firstName;
             user.lastName = req.body.lastName;
             user.email = req.body.email;
