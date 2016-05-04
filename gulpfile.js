@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 
-var input = './scss/*.scss';
+var input = './public/css/*.scss';
 var output = './public/css';
 
 gulp.task('sass', function() {
@@ -18,7 +18,7 @@ gulp.task('sass', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('scss/*.scss', ['sass']);
+    gulp.watch('public/css/*.scss', ['sass']);
 });
 
 // Default Task
