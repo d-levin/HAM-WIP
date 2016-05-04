@@ -27,15 +27,21 @@ GET | / | Retrieve root | index.html
 GET | /users/ | Retrieve all users | JSON object
 GET | /users/:userId | Retrieve user with specified ID | JSON object
 PUT | /users/:userId | Update user with specified ID | 
+DELETE | /users/:userId | Delete user with specified ID |
 POST | /users/ | Creates a new user | 
 GET | /controllers/ | Retrieve all controllers | JSON object
 GET | /controllers/:controllerId | Retrieve controller with specified ID | JSON object
 PUT | /controllers/:controllerId | Update controller with specified ID |
+DELETE | /controllers/:controllerId | Delete controller with specified ID |
 POST | /controllers/ | Creates a new controller | 
 GET | /devices/ | Retrieves all devices | JSON object
 GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
 PUT | /devices/:deviceId | Updates device with specified ID | 
+DELETE | /devices/:deviceId | Delete device with specified ID |
 POST | /devices/ | Creates a new device |
+PUT | /:controllerId/:userId | Adds controller to user | 
+DELETE | /:controllerId/:userId | Removes controller from user | HTTP Status Codes
+
 
 #### Requirements
 * A modern browser
