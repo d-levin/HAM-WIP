@@ -39,9 +39,10 @@ GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
 PUT | /devices/:deviceId | Updates device with specified ID | 
 DELETE | /devices/:deviceId | Delete device with specified ID |
 POST | /devices/ | Creates a new device |
-PUT | /bindings/:controllerId/:userId | Adds controller to user | 
-DELETE | /bindings/:controllerId/:userId | Removes controller from user | HTTP Status Codes
-
+PUT | /controllerbindings/:controllerId/:userId | Adds controller to user | 
+DELETE | /controllerbindings/:controllerId/:userId | Removes controller from user | HTTP Status Codes
+PUT | /devicebindings/:deviceId/:controllerId | Adds device to controller | 
+DELETE | /devicebindings/:deviceId/:controllerId | Removes device from controller | HTTP Status Codes
 
 #### Requirements
 * A modern browser
