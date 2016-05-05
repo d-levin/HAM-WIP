@@ -7,9 +7,9 @@ npm install
 * npm start
 
 #### MongoDB
+* Start the mongod service and set --dbpath to /server/database/data
 * Make sure the user running the program has read/write permissions
-to the /models/db folder before running the program.
-* Start the mongod service and set --dbpath to /models/db
+to the /server/database/data folder before running the program.
 
 #### Features
 * Go to http://localhost:8080
@@ -18,8 +18,7 @@ to the /models/db folder before running the program.
 #### Misc
 * Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
 * SimpleGrid responsive grid system is used
-* Client-side logic in public/js/
-* To insert test data, run 'node fake-data-generator.js' from the /dev/ directory
+* To insert test data, run 'node fake-data-generator.js' from the /misc/ directory
 
 HTTP VERB | PATH | ACTION | RETURN VALUE
 --- | --- | --- | ---
