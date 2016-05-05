@@ -1,7 +1,7 @@
 # Folders #
 ###########
 node_modules/
-models/db/journal/
+server/database/data/journal/
 
 # Temp Files #
 ##############

@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/d-levin/HAM-WIP#readme",
   "dependencies": {
-    "angular": "1.5.5",
+    "bcrypt": "0.8.6",
     "body-parser": "1.15.0",
     "express": "4.13.4",
     "mongodb": "2.1.16",
-    "mongoose": "4.4.13"
+    "mongoose": "4.4.13",
+    "path": "0.12.7"
   },
   "devDependencies": {
     "gulp": "3.9.1",
