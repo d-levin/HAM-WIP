@@ -57,7 +57,6 @@ angular.module('clientApp')
                     }
                     $scope.items = finalResult;
                     $scope.removeDevice = function(data) {
-                      $log.info(data);
                       alert('removing device id: ' + data);
                     };
                     $scope.change = function(data) {

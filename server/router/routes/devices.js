@@ -17,8 +17,9 @@ router.post('/', function(req, res) {
   device.description = req.body.description;
   device.location = req.body.location;
   device.type = req.body.type;
+  device.uri = req.body.uri;
   device.created = new Date();
-  device.controllerId = req.body.controlledId;
+  device.controllerId = req.body.controllerId;
 
   // Save the Device
   device.save(function(err) {
