@@ -3,8 +3,9 @@
 #### Install dependencies:
 npm install
 
-#### Run server:
-* npm start
+#### Directions:
+* Run server using 'npm start' from the HAM-WIP directory
+* Run client using 'grunt serve' from the HAM-WIP/client directory
 
 #### MongoDB
 * Start the mongod service and set --dbpath to /server/database/data
@@ -12,8 +13,8 @@ npm install
 to the /server/database/data folder before running the program.
 
 #### Features
-* Go to http://localhost:8080
-* index.html will be served
+* Go to http://localhost:8080 to load the non-Angular version of the app
+* Go to http://localhost:9000 to load the Angular version of the app
 
 #### Misc
 * Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
@@ -27,6 +28,7 @@ GET | /users/ | Retrieve all users | JSON object
 GET | /users/:userId | Retrieve user with specified ID | JSON object
 PUT | /users/:userId | Update user with specified ID | 
 DELETE | /users/:userId | Delete user with specified ID |
+GET | /users/username/:userEmail | Retrieve user with specified email | JSON object
 POST | /users/ | Creates a new user | 
 GET | /controllers/ | Retrieve all controllers | JSON object
 GET | /controllers/:controllerId | Retrieve controller with specified ID | JSON object

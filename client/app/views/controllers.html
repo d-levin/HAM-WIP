@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Your Controllers:</h2>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td><a href="" ng-click="sortType = 'index'; sortReverse = !sortReverse"># <span ng-show="sortType == 'index' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'index' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'make'; sortReverse = !sortReverse">Make <span ng-show="sortType == 'make' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'make' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'model'; sortReverse = !sortReverse">Model <span ng-show="sortType == 'model' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'model' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'version'; sortReverse = !sortReverse">Version <span ng-show="sortType == 'version' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'version' && sortReverse" class="fa fa-caret-down"></span></a></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in items">
+        <td>{{item.controllerNum}}</td>
+        <td>{{item.make}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.version}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

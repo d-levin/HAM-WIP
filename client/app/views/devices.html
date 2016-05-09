@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Your Devices:</h2>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search devices" ng-model="searchDevice">
+      </div>
+    </div>
+  </form>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td><a href="" ng-click="sortType = 'index'; sortReverse = !sortReverse"># <span ng-show="sortType == 'index' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'index' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">Name <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'description'; sortReverse = !sortReverse">Description <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td><a href="" ng-click="sortType = 'location'; sortReverse = !sortReverse">Location <span ng-show="sortType == 'location' && !sortReverse" class="fa fa-caret-up"></span>
+          <span ng-show="sortType == 'location' && sortReverse" class="fa fa-caret-down"></span></a></td>
+        <td>On/Off</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchDevice">
+        <td>{{item.deviceNum}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.location}}</td>
+        <td>
+          <input type="checkbox" ng-model="power" ng-change="change('{{item._id}}')"></input>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
