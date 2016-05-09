@@ -8,7 +8,7 @@
  * 
  */
 angular.module('clientApp')
-  .controller('DeviceCtrl', function($scope, $cookies, $http) {
+  .controller('DeviceCtrl', function($scope, $cookies, $http, $log) {
     // Get current user from session variable
     $http.get('http://localhost:8080/users/' + $cookies.get('userId'))
       .success(function(response1) {
@@ -56,6 +56,10 @@ angular.module('clientApp')
                       }
                     }
                     $scope.items = finalResult;
+                    $scope.removeDevice = function(data) {
+                      $log.info(data);
+                      alert('removing device id: ' + data);
+                    };
                     $scope.change = function(data) {
                       // Call backend route here 
                       // connecting to Raspberry Pi

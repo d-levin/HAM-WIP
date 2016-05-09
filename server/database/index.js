@@ -6,11 +6,11 @@ var mongoose = require('mongoose');
 var connectionString = 'mongodb://localhost:27017/ham-wip';
 
 mongoose.connect(connectionString, function(err) {
-    if (err) {
-        console.log('Mongoose connection failed');
-    } else {
-        console.log('Mongoose connected to ' + connectionString);
-    }
+  if (err) {
+    console.log('Mongoose connection failed');
+  } else {
+    console.log('Mongoose connected to ' + connectionString);
+  }
 });
 
 /*
@@ -18,11 +18,11 @@ mongoose.connect(connectionString, function(err) {
  * Disconnect Mongoose when Node process terminates
  */
 process.on('SIGINT', function() {
-    mongoose.connection.close(function() {
-        console.log('Closing mongoose connection');
-        console.log('Terminating server');
-        process.exit(0);
-    });
+  mongoose.connection.close(function() {
+    console.log('Closing mongoose connection');
+    console.log('Terminating server');
+    process.exit(0);
+  });
 });
 
 // Export models

@@ -20,6 +20,7 @@
         <td><a href="" ng-click="sortType = 'location'; sortReverse = !sortReverse">Location <span ng-show="sortType == 'location' && !sortReverse" class="fa fa-caret-up"></span>
           <span ng-show="sortType == 'location' && sortReverse" class="fa fa-caret-down"></span></a></td>
         <td>On/Off</td>
+        <td>Remove</td>
       </tr>
     </thead>
     <tbody>
@@ -29,8 +30,9 @@
         <td>{{item.description}}</td>
         <td>{{item.location}}</td>
         <td>
-          <input type="checkbox" ng-model="power" ng-change="change('{{item._id}}')"></input>
+          <input type="checkbox" ng-model="power" ng-change="change(item._id)"></input>
         </td>
+        <td><span class="glyphicon glyphicon-remove" ng-click="removeDevice(item._id)"></span></td>
       </tr>
     </tbody>
   </table>
