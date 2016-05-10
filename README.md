@@ -6,7 +6,8 @@
 
 #### Directions:
 * Run server using 'npm start' from the HAM-WIP directory
-* Run client using 'grunt serve' from the HAM-WIP/client directory
+* Build client using 'grunt' from the HAM-WIP/client directory
+* Run client using 'grunt serve' from the HAM-WIP/client directory to preview
 
 #### MongoDB
 * Start the mongod service and set --dbpath to /server/database/data
@@ -20,8 +21,7 @@ to the /server/database/data folder before running the program.
 * To load the non-Angular admin CRUD page, uncomment line 17 in server/server.js and comment out line 18, then go to http://localhost:8080
 
 #### Misc
-* Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
-* SimpleGrid responsive grid system is used
+* Try GET/POST/PUT/DELETE requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
 * To insert test data, run 'node fake-data-generator.js' from the /misc/ directory
 
 HTTP VERB | PATH | ACTION | RETURN VALUE
@@ -49,5 +49,5 @@ PUT | /devicebindings/:deviceId/:controllerId | Adds device to controller | HTTP
 DELETE | /devicebindings/:deviceId/:controllerId | Removes device from controller | HTTP Status Codes
 
 #### Requirements
-* A modern browser
+* A modern browser (ideally supporting HTML5 for prettified URLs)
 * MongoDB
