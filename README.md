@@ -16,8 +16,8 @@ to the /server/database/data folder before running the program.
 
 #### Features
 * Go to http://localhost:9000 to load the Angular version of the app
-** Loads the website from /server/dist/
-** Update the files in dist by running 'grunt' from /client/
+	* Loads the website from /server/dist/
+	* Update the files in dist by running 'grunt' from /client/
 * To load the non-Angular admin CRUD page, uncomment line 17 in server/server.js and comment out line 18, then go to http://localhost:8080
 
 #### Misc
