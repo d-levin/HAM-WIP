@@ -26,11 +26,14 @@ angular.module('clientApp')
     };
 
     // Handles removal of devices on click event
-    $scope.removeDevice = function(deviceId, controllerId, index) {
+    $scope.removeDevice = function(deviceId, controllerId) {
       $http.delete('http://localhost:8080/devicebindings/' + deviceId + '/' + controllerId)
         .success(function() {
           // Removes the device from the view
-          $scope.items.splice(index, 1);
+          // Use indexOf to support filtering then removal
+          $scope.items.splice($scope.items.indexOf(deviceId), 1);
+          // Clear the search filter
+          $scope.searchDevice = '';
         });
     };
 
