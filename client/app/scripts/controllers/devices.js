@@ -34,6 +34,11 @@ angular.module('clientApp')
           $scope.items.splice($scope.items.indexOf(deviceId), 1);
           // Clear the search filter
           $scope.searchDevice = '';
+          // Show success notification
+          $scope.updated = true;
+        })
+        .failure(function() {
+          $scope.updated = false;
         });
     };
 

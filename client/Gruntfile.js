@@ -1,6 +1,9 @@
 // Generated on 2016-05-08 using generator-angular 0.15.1
 'use strict';
 
+// To fix grunt serve if using html5Mode
+var modRewrite = require('connect-modrewrite');
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -81,6 +84,7 @@ module.exports = function(grunt) {
           middleware: function(connect) {
             return [
               connect.static('.tmp'),
+              modRewrite(['^[^\\.]*$ /index.html [L]']), // Support html5Mode
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
