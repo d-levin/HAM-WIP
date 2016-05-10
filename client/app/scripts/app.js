@@ -21,7 +21,8 @@ angular
   ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
-    // Figure out how to call multiple views/controllers for one route
+    // Routes must not have same names as backend express routes
+    // Conflicts on page refresh
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
@@ -32,22 +33,22 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/controllers', {
+      .when('/mycontrollers', {
         templateUrl: 'views/controllers.html',
         controller: 'ControllerCtrl',
         controllerAs: 'controllers'
       })
-      .when('/devices', {
+      .when('/mydevices', {
         templateUrl: 'views/devices.html',
         controller: 'DeviceCtrl',
         controllerAs: 'devices'
       })
-      .when('/subscription', {
+      .when('/mysubscription', {
         templateUrl: 'views/subscription.html',
         controller: 'SubscriptionCtrl',
         controllerAs: 'subscription'
       })
-      .when('/accountsettings', {
+      .when('/myaccountsettings', {
         templateUrl: 'views/accountsettings.html',
         controller: 'AccountSettingsCtrl',
         controllerAs: 'accountsettings'

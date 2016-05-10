@@ -19,7 +19,7 @@ router.put(deviceIdControllerIdRoute, function(req, res) {
     }
 
     // Notify device that it is now bound to controller
-    Device.findByIdAndUpdate(req.params.deviceId, { controllerId: req.params.controllerId }, function(err) {
+    Device.findByIdAndUpdate(req.params.deviceId, { controllerId: req.params.controllerId, registered: true }, function(err) {
       if (err) {
         return res.send(err);
       }
@@ -41,7 +41,7 @@ router.put(deviceIdControllerIdRoute, function(req, res) {
   });
 });
 
-// Delete controller by from user
+// Delete device from controller
 router.delete(deviceIdControllerIdRoute, function(req, res) {
   Controller.findById(req.params.controllerId, function(err, controller) {
     if (err) {
@@ -54,7 +54,7 @@ router.delete(deviceIdControllerIdRoute, function(req, res) {
       res.sendStatus(404);
     } else {
       // Notify device that it is no longer bound to controller
-      Device.findByIdAndUpdate(req.params.deviceId, { controllerId: undefined }, function(err) {
+      Device.findByIdAndUpdate(req.params.deviceId, { controllerId: undefined, registered: false }, function(err) {
         if (err) {
           return res.send(err);
         }

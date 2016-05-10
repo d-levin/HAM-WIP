@@ -17,6 +17,10 @@ app.use(cors());
 // app.use(express.static(path.join(__dirname, '../client/hamwip_client_nonangular/app')));
 app.use(express.static(path.join(__dirname, '/dist')));
 routes = require('./router')(app);
+// Catch all other routes
+app.all('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
+});
 
 /* Start the server */
 app.listen(port, function() {

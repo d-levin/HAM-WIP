@@ -9,6 +9,31 @@
  */
 angular.module('clientApp')
   .controller('DeviceCtrl', function($scope, $cookies, $http, $log) {
+    // Set the default sort type
+    $scope.sortType = 'index';
+    // Set the default sort order
+    $scope.sortReverse = false;
+    // Set the default search/filter term
+    $scope.searchDevice = '';
+
+    // Manages the on/off events for devices
+    $scope.change = function(data) {
+      // Call backend route here 
+      // connecting to Raspberry Pi
+      // and turning off/on device
+      $log.info('Changing device id: ' + data);
+      //alert('call status change: ' + data);
+    };
+
+    // Handles removal of devices on click event
+    $scope.removeDevice = function(deviceId, controllerId, index) {
+      $http.delete('http://localhost:8080/devicebindings/' + deviceId + '/' + controllerId)
+        .success(function() {
+          // Removes the device from the view
+          $scope.items.splice(index, 1);
+        });
+    };
+
     // Get current user from session variable
     $http.get('http://localhost:8080/users/' + $cookies.get('userId'))
       .success(function(response1) {
@@ -58,23 +83,6 @@ angular.module('clientApp')
                       }
                     }
                     $scope.items = finalResult;
-                    $scope.removeDevice = function(data) {
-                      $log.info('removing device id: ' + data);
-                      //alert('removing device id: ' + data);
-                    };
-                    $scope.change = function(data) {
-                      // Call backend route here 
-                      // connecting to Raspberry Pi
-                      // and turning off/on device
-                      $log.info('Changing device id: ' + data);
-                      //alert('call status change: ' + data);
-                    };
-                    // Set the default sort type
-                    $scope.sortType = 'index';
-                    // Set the default sort order
-                    $scope.sortReverse = false;
-                    // Set the default search/filter term
-                    $scope.searchDevice = '';
                   });
               }
             });

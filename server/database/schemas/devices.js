@@ -10,6 +10,7 @@ var deviceSchema = new Schema({
   type: String,
   uri: String,
   created: Date,
+  registered: Boolean,
   controllerId: { type: Schema.ObjectId, ref: 'Controller' }
 });
 

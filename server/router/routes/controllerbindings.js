@@ -41,7 +41,7 @@ router.put(controllerIdUserIdRoute, function(req, res) {
   });
 });
 
-// Delete controller by from user
+// Delete controller from user
 router.delete(controllerIdUserIdRoute, function(req, res) {
   User.findById(req.params.userId, function(err, user) {
     if (err) {
