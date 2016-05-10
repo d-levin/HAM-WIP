@@ -15,7 +15,6 @@ var userSchema = new Schema({
   state: String,
   zip: Number,
   password: { type: String, required: true },
-  created: Date,
   controllers: [{
     type: Schema.ObjectId,
     ref: 'Controller',

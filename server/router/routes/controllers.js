@@ -16,7 +16,6 @@ router.post('/', function(req, res) {
   controller.make = req.body.make;
   controller.model = req.body.model;
   controller.version = req.body.version;
-  controller.created = new Date();
   controller.userId = req.body.userId;
 
   // Save the Controller

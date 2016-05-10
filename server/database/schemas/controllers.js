@@ -12,8 +12,7 @@ var controllerSchema = new Schema({
     ref: 'Device',
     unique: true
   }],
-  userId: { type: Schema.ObjectId, ref: 'User' },
-  created: Date
+  userId: { type: Schema.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model('Controller', controllerSchema);

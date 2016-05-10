@@ -24,7 +24,6 @@ router.post('/', function(req, res) {
   user.state = req.body.state;
   user.zip = req.body.zip;
   user.password = req.body.password;
-  user.created = new Date();
 
   // Save the user
   user.save(function(err) {
