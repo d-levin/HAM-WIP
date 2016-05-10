@@ -18,18 +18,25 @@ router.put(deviceIdControllerIdRoute, function(req, res) {
       return res.send(err);
     }
 
-    // Adding to set prevents duplicates
-    var added = controller.devices.addToSet(req.params.deviceId);
-    var returnCode = 200;
-    if (added.length <= 0) {
-      returnCode = 409;
-    }
-
-    controller.save(function(err) {
+    // Notify device that it is now bound to controller
+    Device.findByIdAndUpdate(req.params.deviceId, { controllerId: req.params.controllerId }, function(err) {
       if (err) {
         return res.send(err);
       }
-      res.sendStatus(returnCode);
+
+      // Adding to set prevents duplicates
+      var added = controller.devices.addToSet(req.params.deviceId);
+      var returnCode = 200;
+      if (added.length <= 0) {
+        returnCode = 409;
+      }
+
+      controller.save(function(err) {
+        if (err) {
+          return res.send(err);
+        }
+        res.sendStatus(returnCode);
+      });
     });
   });
 });
@@ -46,12 +53,18 @@ router.delete(deviceIdControllerIdRoute, function(req, res) {
     if (index < 0) {
       res.sendStatus(404);
     } else {
-      controller.devices.pull({ _id: req.params.deviceId });
-      controller.save(function(err) {
+      // Notify device that it is no longer bound to controller
+      Device.findByIdAndUpdate(req.params.deviceId, { controllerId: undefined }, function(err) {
         if (err) {
           return res.send(err);
         }
-        res.sendStatus(200);
+        controller.devices.pull({ _id: req.params.deviceId });
+        controller.save(function(err) {
+          if (err) {
+            return res.send(err);
+          }
+          res.sendStatus(200);
+        });
       });
     }
   });

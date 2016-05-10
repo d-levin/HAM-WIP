@@ -8,13 +8,9 @@ var deviceSchema = new Schema({
   description: String,
   location: String,
   type: String,
-  uri: { type: String, unique: true, required: true },
+  uri: String,
   created: Date,
-  controllerId: [{
-    type: Schema.ObjectId,
-    ref: 'Controller',
-    unique: true
-  }]
+  controllerId: { type: Schema.ObjectId, ref: 'Controller' }
 });
 
 module.exports = mongoose.model('Device', deviceSchema);

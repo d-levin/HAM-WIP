@@ -12,7 +12,7 @@ var controllerSchema = new Schema({
     ref: 'Device',
     unique: true
   }],
-  userId: Schema.ObjectId,
+  userId: { type: Schema.ObjectId, ref: 'User' },
   created: Date
 });
 

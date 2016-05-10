@@ -3,7 +3,10 @@
 var mongoose = require('mongoose');
 
 // String after port specifies which db to use on the given server
-var connectionString = 'mongodb://localhost:27017/ham-wip';
+//var connectionString = 'mongodb://localhost:27017/ham-wip';
+var dbuser = 'dbuser';
+var dbpassword = 'dbpassword';
+var connectionString = 'mongodb://' + dbuser + ':' + dbpassword + '@ds019101.mlab.com:19101/ham-wip';
 
 mongoose.connect(connectionString, function(err) {
   if (err) {
