@@ -1,7 +1,8 @@
 # HAM-WIP
 
 #### Install dependencies:
-npm install
+* cd server && npm install
+* cd client && npm install && bower install
 
 #### Directions:
 * Run server using 'npm start' from the HAM-WIP directory
@@ -13,8 +14,10 @@ npm install
 to the /server/database/data folder before running the program.
 
 #### Features
-* Go to http://localhost:8080 to load the non-Angular version of the app
 * Go to http://localhost:9000 to load the Angular version of the app
+** Loads the website from /server/dist/
+** Update the files in dist by running 'grunt' from /client/
+* To load the non-Angular admin CRUD page, uncomment line 17 in server/server.js and comment out line 18, then go to http://localhost:8080
 
 #### Misc
 * Try GET/POST/PUT requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.

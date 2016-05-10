@@ -19,7 +19,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function($routeProvider) {
+  .config(function($routeProvider, $locationProvider) {
     $routeProvider
     // Figure out how to call multiple views/controllers for one route
       .when('/', {
@@ -55,4 +55,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+    // Use the HTML5 History API to prettify the URL
+    $locationProvider.html5Mode(true);
   });

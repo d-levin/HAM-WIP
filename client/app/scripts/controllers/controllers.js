@@ -10,7 +10,7 @@
  * of the results in $scope
  */
 angular.module('clientApp')
-  .controller('ControllerCtrl', function($scope, $cookies, $http, $log) {
+  .controller('ControllerCtrl', function($scope, $cookies, $http) {
     // Get current user from session variable
     $http.get('http://localhost:8080/users/' + $cookies.get('userId'))
       .success(function(response1) {

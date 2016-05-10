@@ -22,7 +22,7 @@ module.exports = function(grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: '../server/dist'
   };
 
   // Define the configuration for all the tasks
@@ -165,7 +165,10 @@ module.exports = function(grunt) {
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git{,*/}*'
           ]
-        }]
+        }],
+        options: {
+          force: true
+        }
       },
       server: '.tmp'
     },
@@ -482,8 +485,8 @@ module.exports = function(grunt) {
     'wiredep',
     'concurrent:test',
     'postcss',
-    'connect:test',
-    'karma'
+    'connect:test'
+    // 'karma'
   ]);
 
   grunt.registerTask('build', [

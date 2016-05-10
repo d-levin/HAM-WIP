@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in items">
+      <tr ng-repeat="item in items | orderBy:sortType:sortReverse">
         <td>{{item.controllerNum}}</td>
         <td>{{item.make}}</td>
         <td>{{item.model}}</td>

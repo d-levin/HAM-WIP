@@ -21,7 +21,7 @@ angular.module('clientApp')
       $location.path('/');
     };
     $scope.updateUser = function() {
-      var params = "";
+      var params = '';
       params += 'firstName=' + $scope.firstName + '&';
       params += 'lastName=' + $scope.lastName + '&';
       params += 'phone=' + $scope.phone + '&';
@@ -32,7 +32,7 @@ angular.module('clientApp')
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      }
+      };
       $http.put('http://localhost:8080/users/' + $cookies.get('userId'), params, config)
         .success(function() {
           $scope.updated = true;
@@ -43,5 +43,5 @@ angular.module('clientApp')
           $scope.submitted = false;
           $log.error('User update failed: ' + response);
         });
-    }
+    };
   });

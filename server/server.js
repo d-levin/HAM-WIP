@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 /* Initialize routes */
-app.use(express.static(path.join(__dirname, '../client/hamwip_client_nonangular/app')));
+// app.use(express.static(path.join(__dirname, '../client/hamwip_client_nonangular/app')));
+app.use(express.static(path.join(__dirname, '/dist')));
 routes = require('./router')(app);
 
 /* Start the server */
