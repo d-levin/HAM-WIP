@@ -17,12 +17,12 @@ router.post('/', function(req, res) {
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.email = req.body.email;
-  user.phone = req.body.phone;
-  user.country = req.body.country;
-  user.street1 = req.body.street1;
-  user.street2 = req.body.street2;
-  user.state = req.body.state;
-  user.zip = req.body.zip;
+  user.phone = (req.body.phone === undefined) ? '' : req.body.phone;
+  user.country = (req.body.country === undefined) ? '' : req.body.country;
+  user.street1 = (req.body.street1 === undefined) ? '' : req.body.street1;
+  user.street2 = (req.body.street2 === undefined) ? '' : req.body.street2;
+  user.state = (req.body.state === undefined) ? '' : req.body.state;
+  user.zip = (req.body.zip === undefined) ? '' : req.body.zip;
   user.password = req.body.password;
 
   // Save the user

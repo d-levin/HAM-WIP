@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var controllerSchema = new Schema({
-  make: String,
+  make: { type: String, required: true },
   model: String,
   version: Number,
   devices: [{

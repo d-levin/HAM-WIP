@@ -14,7 +14,7 @@ var controllerIdRoute = '/:controllerId';
 router.post('/', function(req, res) {
   var controller = new Controller();
   controller.make = req.body.make;
-  controller.model = req.body.model;
+  controller.model = (req.body.model === undefined) ? '' : req.body.model;
   controller.version = req.body.version;
   controller.userId = req.body.userId;
 
@@ -44,6 +44,16 @@ router.get(controllerIdRoute, function(req, res) {
       return res.send(err);
     }
     res.json(controller);
+  });
+});
+
+// Get all controllers mapped to the given user
+router.get('/byuser/:userId', function(req, res) {
+  Controller.find({ 'userId': req.params.userId }, function(err, controllers) {
+    if (err) {
+      return res.send(err);
+    }
+    res.json(controllers);
   });
 });
 

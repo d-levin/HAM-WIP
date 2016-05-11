@@ -9,11 +9,11 @@ var userSchema = new Schema({
   lastName: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   phone: String,
-  country: String,
   street1: String,
   street2: String,
   state: String,
-  zip: Number,
+  zip: String,
+  country: String,
   password: { type: String, required: true },
   controllers: [{
     type: Schema.ObjectId,

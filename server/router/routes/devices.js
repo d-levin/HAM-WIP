@@ -14,11 +14,11 @@ var deviceIdRoute = '/:deviceId';
 router.post('/', function(req, res) {
   var device = new Device();
   device.name = req.body.name;
-  device.description = req.body.description;
-  device.location = req.body.location;
-  device.type = req.body.type;
-  device.uri = req.body.uri;
-  device.registered = false;
+  device.description = (req.body.description === undefined) ? '' : req.body.description;
+  device.location = (req.body.location === undefined) ? '' : req.body.location;
+  device.type = (req.body.type === undefined) ? '' : req.body.type;
+  device.uri = (req.body.uri === undefined) ? '' : req.body.uri;
+  device.registered = false; // Initial status
   device.controllerId = req.body.controllerId;
 
   // Save the Device

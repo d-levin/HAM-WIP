@@ -7,7 +7,7 @@
 #### Directions:
 * Run server using 'npm start' from the HAM-WIP directory
 * Build client using 'grunt' from the HAM-WIP/client directory
-* Run client using 'grunt serve' from the HAM-WIP/client directory to preview
+* Run client using 'grunt serve' from the HAM-WIP/client directory to preview on port 9000
 
 #### MongoDB
 * Start the mongod service and set --dbpath to /server/database/data
@@ -15,10 +15,10 @@
 to the /server/database/data folder before running the program.
 
 #### Features
-* Go to http://localhost:9000 to load the Angular version of the app
+* Go to http://localhost:8080 to load the Angular version of the app
 	* Loads the website from /server/dist/
-	* Update the files in dist by running 'grunt' from /client/
-* To load the non-Angular admin CRUD page, uncomment line 17 in server/server.js and comment out line 18, then go to http://localhost:8080
+	* Update the files in dist first by running 'grunt' from /client/
+* To load the non-Angular admin CRUD page, go to http://localhost:8080/admin
 
 #### Misc
 * Try GET/POST/PUT/DELETE requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.
@@ -27,6 +27,7 @@ to the /server/database/data folder before running the program.
 HTTP VERB | PATH | ACTION | RETURN VALUE
 --- | --- | --- | ---
 GET | / | Retrieve root | index.html
+GET | /admin | Retrieve admin page | Serves the admin CRUD interface
 GET | /users/ | Retrieve all users | JSON object
 GET | /users/:userId | Retrieve user with specified ID | JSON object
 PUT | /users/:userId | Update user with specified ID | 
@@ -38,6 +39,7 @@ GET | /controllers/:controllerId | Retrieve controller with specified ID | JSON 
 PUT | /controllers/:controllerId | Update controller with specified ID |
 DELETE | /controllers/:controllerId | Delete controller with specified ID |
 POST | /controllers/ | Creates a new controller | 
+GET | /controllers/byuser/:userId | Retrieve all controllers mapped to the specified user | JSON object
 GET | /devices/ | Retrieves all devices | JSON object
 GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
 PUT | /devices/:deviceId | Updates device with specified ID | 

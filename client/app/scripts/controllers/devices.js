@@ -29,15 +29,24 @@ angular.module('clientApp')
     $scope.removeDevice = function(deviceId, controllerId) {
       $http.delete('http://localhost:8080/devicebindings/' + deviceId + '/' + controllerId)
         .success(function() {
-          // Removes the device from the view
-          // Use indexOf to support filtering then removal
-          $scope.items.splice($scope.items.indexOf(deviceId), 1);
+          // Remove the device from the view
+          // Find the location of the item
+          // Required to support filtering/sorting
+          var index = 0;
+          for (var i = 0; i < $scope.items.length; i++) {
+            // If item exist, then guaranteed to have id field
+            if ($scope.items[i]._id === deviceId) {
+              index = i;
+              break;
+            }
+          }
+          $scope.items.splice(index, 1);
           // Clear the search filter
           $scope.searchDevice = '';
           // Show success notification
           $scope.updated = true;
         })
-        .failure(function() {
+        .error(function() {
           $scope.updated = false;
         });
     };
