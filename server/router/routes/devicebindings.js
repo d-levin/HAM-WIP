@@ -19,7 +19,7 @@ router.put(deviceIdControllerIdRoute, function(req, res) {
     }
 
     // Notify device that it is now bound to controller
-    Device.findByIdAndUpdate(req.params.deviceId, { controllerId: req.params.controllerId, registered: true }, function(err) {
+    Device.findByIdAndUpdate(req.params.deviceId, { controllerId: req.params.controllerId }, function(err) {
       if (err) {
         return res.send(err);
       }
@@ -54,7 +54,7 @@ router.delete(deviceIdControllerIdRoute, function(req, res) {
       res.sendStatus(404);
     } else {
       // Notify device that it is no longer bound to controller
-      Device.findByIdAndUpdate(req.params.deviceId, { controllerId: undefined, registered: false }, function(err) {
+      Device.findByIdAndUpdate(req.params.deviceId, { controllerId: undefined }, function(err) {
         if (err) {
           return res.send(err);
         }

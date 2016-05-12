@@ -50,6 +50,30 @@ router.get(deviceIdRoute, function(req, res) {
   });
 });
 
+// Mark device as registered
+router.put('/register/:deviceId', function(req, res) {
+  // With option to return the updated object
+  Device.findByIdAndUpdate(req.params.deviceId, { registered: true }, { new: true }, function(err, post) {
+    if (err) {
+      return res.send(err);
+    }
+    // Send the updated device
+    res.json(post);
+  });
+});
+
+// Mark device as unregistered
+router.put('/unregister/:deviceId', function(req, res) {
+  // With option to return the updated object
+  Device.findByIdAndUpdate(req.params.deviceId, { registered: false }, { new: true }, function(err, post) {
+    if (err) {
+      return res.send(err);
+    }
+    // Send the updated device
+    res.json(post);
+  });
+});
+
 // Update Device by ID
 router.put(deviceIdRoute, function(req, res) {
   // With option to return the updated object
