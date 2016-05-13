@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name app.controller:DeviceCtrl
+ * @name app.controller:AddDeviceCtrl
  * @description
- * # DeviceCtrl
+ * # AddDeviceCtrl
  * 
  */
 angular.module('app')
-  .controller('DeviceCtrl', ['$scope', '$cookies', '$http', '$log', '$rootScope', 'serverURL',
-    function($scope, $cookies, $http, $log, $rootScope, serverURL) {
+  .controller('AddDeviceCtrl', ['$scope', '$cookies', '$http', '$rootScope', 'serverURL',
+    function($scope, $cookies, $http, $rootScope, serverURL) {
       // Set the default sort type
       $scope.sortType = 'index';
       // Set the default sort order
@@ -17,18 +17,9 @@ angular.module('app')
       // Set the default search/filter term
       $scope.searchDevice = '';
 
-      // Manages the on/off events for devices
-      $scope.change = function(data) {
-        // Call backend route here 
-        // connecting to Raspberry Pi
-        // and turning off/on device
-        $log.info('Changing device id: ' + data);
-        //alert('call status change: ' + data);
-      };
-
-      // Handles removal of devices on click event
-      $scope.unregDevice = function(deviceId) {
-        $http.put(serverURL + '/devices/unregister/' + deviceId)
+      // Handles registration of devices on click event
+      $scope.registerDevice = function(deviceId) {
+        $http.put(serverURL + '/devices/register/' + deviceId, { registered: true })
           .success(function() {
             // Remove the device from the view
             // Find the location of the item
@@ -52,14 +43,14 @@ angular.module('app')
           });
       };
 
+      // Get current user from session variable
       $scope.onInit = function() {
-        $rootScope.currentView = 'Manage Devices';
-        // Get current user from session variable
+        $rootScope.currentView = 'Add Devices';
         $http.get(serverURL + '/users/' + $cookies.get('userId'))
           .success(function(response1) {
             // User is guaranteed to have the controllers member
             var controllers = response1.controllers;
-            if (controllers && controllers.length > 0) {
+            if (controllers.length > 0) {
               $http.get(serverURL + '/controllers/')
                 .success(function(response2) {
                   var results = [];
@@ -93,7 +84,7 @@ angular.module('app')
                         var indexCounter = 1;
                         for (i = 0; i < devices.length; i++) {
                           for (j = 0; j < response3.length; j++) {
-                            if (devices[i] === response3[j]._id && response3[j].registered === true) {
+                            if (devices[i] === response3[j]._id && response3[j].registered === false) {
                               response3[j].deviceNum = indexCounter++;
                               finalResult.push(response3[j]);
                               // Exit inner loop after first find

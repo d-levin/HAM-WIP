@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name clientApp
+ * @name app
  * @description
- * # clientApp
+ * # app
  *
  * Main module of the application.
  */
 angular
-  .module('clientApp', [
+  .module('app', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -19,14 +19,25 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .constant('serverURL', 'http://localhost:8080')
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
     // Routes must not have same names as backend express routes
     // Conflicts on page refresh
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/signin.html',
+        controller: 'SignInCtrl',
+        controllerAs: 'signin'
+      })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignUpCtrl',
+        controllerAs: 'signup'
+      })
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboard'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -42,6 +53,11 @@ angular
         templateUrl: 'views/devices.html',
         controller: 'DeviceCtrl',
         controllerAs: 'devices'
+      })
+      .when('/mydevices/add', {
+        templateUrl: 'views/add-devices.html',
+        controller: 'AddDeviceCtrl',
+        controllerAs: 'add-devices'
       })
       .when('/mysubscription', {
         templateUrl: 'views/subscription.html',

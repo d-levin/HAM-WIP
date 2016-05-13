@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>HAM-WIP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Prettify URL -->
@@ -15,73 +15,75 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/loginform.css">
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   </head>
 
-  <body ng-app="clientApp">
+  <body ng-app="app">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="row">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="/">HAM-WIP</a>
-            </div>
-          </div>
-          <div class="row">
-            <p ng-controller="MainCtrl">Welcome, {{firstName}}! You are logged in as <i>{{email}}</i>
-            </p>
-          </div>
+    <div class="bg-color navbar navbar-default no-border no-radius shadow-spread b-border" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <h1><a href="{{homeURL}}"><i id="logo" class="fa fa-home" aria-hidden="true"></i>HAM-WIP</a><span class="subtitle">Home Automation and Monitoring Web Interaction Portal</span></h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-show="loggedIn"><a ng-href="/signin" class="logout-link">Welcome, {{firstName}}! <span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="panel panel-success shadow">
+        <div class="panel-heading">
+          <h2 class="panel-title">{{currentView}}</h2><a ng-href="/dashboard" ng-show="currentView !== 'Dashboard' && currentView !== 'Sign In' && currentView !== 'Sign Up'" class="navLink">Return to dashboard</a>
+        </div>
+        <div class="panel-body" ng-view=""></div>
+        <div class="panel-footer text-center">
+          Created in 2016 by Dennis Levin, Harish Bajaj, and Matt Jordan.
         </div>
       </div>
-      <div class="container">
-      </div>
-      <div class="container">
-        <div ng-view=""></div>
-      </div>
-      <div class="footer">
-        <div class="container">
-          <p>Created in 2016 by Dennis Levin, Harish Bajaj, and Matt Jordan.</p>
-        </div>
-      </div>
-      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-      <script>
-      ! function(A, n, g, u, l, a, r) {
-        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-            (A[l].q = A[l].q || []).push(arguments)
-          }, A[l].l = +new Date, a = n.createElement(g),
-          r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-      }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+      A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+          (A[l].q = A[l].q || []).push(arguments)
+        }, A[l].l = +new Date, a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-XXXXX-X');
-      ga('send', 'pageview');
-      </script>
-      <!-- build:js(.) scripts/vendor.js -->
-      <!-- bower:js -->
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-aria/angular-aria.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-messages/angular-messages.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-touch/angular-touch.js"></script>
-      <!-- endbower -->
-      <!-- endbuild -->
-      <!-- build:js({.tmp,app}) scripts/scripts.js -->
-      <script src="scripts/app.js"></script>
-      <script src="scripts/controllers/main.js"></script>
-      <script src="scripts/controllers/about.js"></script>
-      <script src="scripts/controllers/controllers.js"></script>
-      <script src="scripts/controllers/devices.js"></script>
-      <script src="scripts/controllers/accountsettings.js"></script>
-      <!-- endbuild -->
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/controllers.js"></script>
+    <script src="scripts/controllers/devices.js"></script>
+    <script src="scripts/controllers/add-devices.js"></script>
+    <script src="scripts/controllers/accountsettings.js"></script>
+    <script src="scripts/controllers/subscription.js"></script>
+    <script src="scripts/controllers/signin.js"></script>
+    <script src="scripts/controllers/signup.js"></script>
+    <!-- endbuild -->
   </body>
 
 </html>

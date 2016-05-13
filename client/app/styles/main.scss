@@ -1,89 +1,120 @@
-// bower:scss
-// endbower
+/* Bootstrap overrides */
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+$green: #9bce7d;
+$dark-green: #76b852;
+$dark-green-r: 118;
+$dark-green-g: 184;
+$dark-green-b: 82;
+$light-teal: #72ac93;
+$teal: #699e87;
+$red: #bd0102;
+$gray: #6b6b6b;
+$default-font: 'Work Sans',
+sans-serif;
+$bold: 700;
+$normal: 400;
+$thin: 300;
+@mixin box-shadow($offset-horizontal, $offset-vertical, $blur, $color) {
+  -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $color !important;
+  -moz-box-shadow: $offset-horizontal $offset-vertical $blur $color !important;
+  box-shadow: $offset-horizontal $offset-vertical $blur $color !important;
+}
+
+@mixin box-shadow-spread($offset-horizontal, $offset-vertical, $blur, $spread, $color) {
+  -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+  -moz-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+  box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
+}
+
+h1 {
+  font-family: $default-font !important;
+  font-weight: $bold !important;
+  // letter-spacing: 0.1em;
+  font-size: 4em !important;
+  text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1);
+  a {
+    color: #ffffff;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+#logo {
+  padding-right: 0.3em;
+}
+
+h2 {
+  font-size: 2.6em !important;
+}
+
+.subtitle {
+  font-size: 0.3em;
+  text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.bg-color {
+  background-color: $dark-green !important;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-radius {
+  border-radius: 0 !important;
+}
+
+.b-border {
+  border-bottom: 1px solid rgba(78, 122, 54, 0.4) !important;
+}
+
+.shadow-spread {
+  @include box-shadow-spread(0, 0.2em, 0.6em, 0, rgba($dark-green-r, $dark-green-g, $dark-green-b, 1));
+  position: relative;
+}
+
+.shadow {
+  @include box-shadow(0, 0, 0.5em, rgba(0, 0, 0, 0.2));
+}
+
+.icon {
+  display: inline-block;
+  padding-right: 0.3em;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.align-fa {
+  vertical-align: sub;
+}
+
+.navLink {
+  color: $dark-green;
+  font-size: 0.9em;
+}
+
+.navLink:hover {
+  color: $green;
+}
+
+.logout-link {
+  color: #ffffff !important;
 }
 
 body {
   padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+  background: $green;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, $green, #8DC26F);
+  background: -moz-linear-gradient(right, $green, #8DC26F);
+  background: -o-linear-gradient(right, $green, #8DC26F);
+  background: linear-gradient(to left, $green, #8DC26F);
+  // font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

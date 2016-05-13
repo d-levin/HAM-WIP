@@ -18,8 +18,7 @@
           <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-down"></span></a></td>
         <td><a href="" ng-click="sortType = 'location'; sortReverse = !sortReverse">Location <span ng-show="sortType == 'location' && !sortReverse" class="fa fa-caret-up"></span>
           <span ng-show="sortType == 'location' && sortReverse" class="fa fa-caret-down"></span></a></td>
-        <td>On/Off</td>
-        <td>Remove</td>
+        <td>Add</td>
       </tr>
     </thead>
     <tbody>
@@ -28,17 +27,14 @@
         <td>{{item.name}}</td>
         <td>{{item.description}}</td>
         <td>{{item.location}}</td>
-        <td>
-          <input type="checkbox" ng-model="power" ng-change="change(item._id)"></input>
-        </td>
-        <td><span class="glyphicon glyphicon-remove" ng-click="unregDevice(item._id)"></span></td>
+        <td><span class="glyphicon glyphicon-plus" ng-click="registerDevice(item._id)"></span></td>
       </tr>
     </tbody>
   </table>
   <div class="alert alert-success" ng-show="updated === true">
-    <strong>Success!</strong> Device removed.
+    <strong>Success!</strong> Device registered.
   </div>
   <div class="alert alert-danger" ng-show="updated === false">
-    <strong>Failure!</strong> Device not removed.
+    <strong>Failure!</strong> Device not registered.
   </div>
 </div>
