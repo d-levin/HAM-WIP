@@ -7,12 +7,15 @@
 #### Directions:
 * Run server using 'npm start' from the HAM-WIP directory
 * Build client using 'grunt' from the HAM-WIP/client directory
+	* Builds the app to /server/dist/
 * Run client using 'grunt serve' from the HAM-WIP/client directory to preview on port 9000
 
 #### MongoDB
-* Start the mongod service and set --dbpath to /server/database/data
-* Make sure the user running the program has read/write permissions
-to the /server/database/data folder before running the program.
+* The app connects to a free MongoDB at [mLab](https://mlab.com)
+	* Database: ham-wip
+	* Username: dbuser
+	* Password: dbpassword
+* Because a free low-performance database is used, there is a slight delay when retrieving data in the app
 
 #### Features
 * Go to http://localhost:8080 to load the Angular version of the app
@@ -54,4 +57,3 @@ DELETE | /devicebindings/:deviceId/:controllerId | Removes device from controlle
 
 #### Requirements
 * A modern browser (ideally supporting HTML5 for prettified URLs)
-* MongoDB
