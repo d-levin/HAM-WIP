@@ -1,5 +1,8 @@
 /* Bootstrap overrides */
 
+
+/* Variables */
+
 $green: #9bce7d;
 $dark-green: #76b852;
 $dark-green-r: 118;
@@ -14,6 +17,9 @@ sans-serif;
 $bold: 700;
 $normal: 400;
 $thin: 300;
+
+/* Mixins */
+
 @mixin box-shadow($offset-horizontal, $offset-vertical, $blur, $color) {
   -webkit-box-shadow: $offset-horizontal $offset-vertical $blur $color !important;
   -moz-box-shadow: $offset-horizontal $offset-vertical $blur $color !important;
@@ -25,6 +31,28 @@ $thin: 300;
   -moz-box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
   box-shadow: $offset-horizontal $offset-vertical $blur $spread $color;
 }
+
+
+/* Universal */
+
+body {
+  padding: 0;
+  background: $green;
+  // Fallback for old browsers
+  background: -webkit-linear-gradient(right, $green, #8DC26F);
+  background: -moz-linear-gradient(right, $green, #8DC26F);
+  background: -o-linear-gradient(right, $green, #8DC26F);
+  background: linear-gradient(to left, $green, #8DC26F);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#logo {
+  padding-right: 0.3em;
+}
+
+
+/* Typography */
 
 h1 {
   font-family: $default-font !important;
@@ -41,10 +69,6 @@ h1 {
   }
 }
 
-#logo {
-  padding-right: 0.3em;
-}
-
 h2 {
   font-size: 2.6em !important;
 }
@@ -54,6 +78,22 @@ h2 {
   text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1);
   color: #ffffff;
 }
+
+.navLink {
+  color: $dark-green;
+  font-size: 0.9em;
+}
+
+.navLink:hover {
+  color: $green;
+}
+
+.logout-link {
+  color: #ffffff !important;
+}
+
+
+/* Utility classes */
 
 .bg-color {
   background-color: $dark-green !important;
@@ -93,28 +133,33 @@ h2 {
   vertical-align: sub;
 }
 
-.navLink {
-  color: $dark-green;
-  font-size: 0.9em;
+
+/*==================================
+=            Animations            =
+==================================*/
+
+.ng-enter {
+  animation: fadeIn 0.8s linear;
+  -webkit-animation: fadeIn 0.8s linear;
 }
 
-.navLink:hover {
-  color: $green;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.logout-link {
-  color: #ffffff !important;
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-body {
-  padding: 0;
-  background: $green;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, $green, #8DC26F);
-  background: -moz-linear-gradient(right, $green, #8DC26F);
-  background: -o-linear-gradient(right, $green, #8DC26F);
-  background: linear-gradient(to left, $green, #8DC26F);
-  // font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
+/*=====  End of Animations  ======*/
