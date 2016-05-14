@@ -8,6 +8,7 @@ $dark-green: #76b852;
 $dark-green-r: 118;
 $dark-green-g: 184;
 $dark-green-b: 82;
+$link-green: #3c763d;
 $light-teal: #72ac93;
 $teal: #699e87;
 $red: #bd0102;
@@ -73,6 +74,14 @@ h2 {
   font-size: 2.6em !important;
 }
 
+th a {
+  color: $link-green !important;
+}
+
+.dark-links a {
+  color: $link-green !important;
+}
+
 .subtitle {
   font-size: 0.3em;
   text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.1);
@@ -90,6 +99,11 @@ h2 {
 
 .logout-link {
   color: #ffffff !important;
+}
+
+.footer-text {
+  font-size: 1em;
+  color: #4d4d4d;
 }
 
 
@@ -131,6 +145,18 @@ h2 {
 
 .align-fa {
   vertical-align: sub;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.bg-lamp {
+  background-color: #ffffff;
+  background: url("../images/bg-lamp.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
 }
 
 

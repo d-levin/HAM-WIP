@@ -1,16 +1,18 @@
 <!-- Code source http://codepen.io/colorlib/pen/rxddKy -->
-<div class="login-page">
-  <div class="form">
-    <form class="login-form" ng-submit="validateUser()">
-      <input type="text" ng-model="user.username" placeholder="username (email address)" required>
-      <input type="password" ng-model="user.password" placeholder="password" required>
-      <button type="submit">login</button>
-      <p class="message">Not registered? <a href="/signup">Create an account</a></p>
-      <div class="form-group">
-        <div class="alert alert-danger" ng-show="!valid">
-          <strong>Incorrect</strong> username or password.
+<div class="full-height bg-lamp">
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form" ng-submit="validateUser()">
+        <input type="text" ng-model="user.username" placeholder="username (email address)" required>
+        <input type="password" ng-model="user.password" placeholder="password" required>
+        <button type="submit">login</button>
+        <p class="message">Not registered? <a href="/signup">Create an account</a></p>
+        <div class="form-group">
+          <div class="alert alert-danger" ng-show="!valid">
+            <strong>Incorrect</strong> username or password.
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
