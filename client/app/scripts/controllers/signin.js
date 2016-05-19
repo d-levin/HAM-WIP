@@ -13,7 +13,7 @@ angular.module('app')
       $rootScope.homeURL = '/';
       $rootScope.currentView = 'Sign In';
       $rootScope.loggedIn = false;
-      $scope.user = { 'username': 'dennis.a.levin@gmail.com', 'password': 'mypassword' };
+      $scope.user = { 'username': 'steve.hawking@winning.com', 'password': 'mypassword' };
       $scope.valid = true;
       $scope.validateUser = function() {
         // Validate input here

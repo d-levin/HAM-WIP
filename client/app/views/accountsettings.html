@@ -1,87 +1,77 @@
 <div class="container-fluid" ng-init="onInit()">
-  <div class="row">
-    <div class="col-sm-12">
-      <form role="form" class="form-horizontal" ng-submit="updateUser()">
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="firstName">First name</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter first name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="lastName">Last name</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="lastName" id="lastName" placeholder="Enter last name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="email">Email</label>
-          <div class="col-sm-9">
-            <input type="email" class="form-control" ng-model="email" id="email" placeholder="Enter email address">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="password">Password</label>
-          <div class="col-sm-9">
-            <input type="password" class="form-control" ng-model="password" id="password" placeholder="Enter new password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="phone">Phone</label>
-          <div class="col-sm-9">
-            <input type="tel" class="form-control" ng-model="phone" id="phone" placeholder="Enter phone number">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="street1">Address Line 1</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="street1" id="street1" placeholder="Enter street address, P.O. box, C/O">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="street2">Address Line 2</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="street2" id="street2" placeholder="Enter apartment, suite, unit, building, floor, etc">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="zip">ZIP Code</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="zip" id="zip" placeholder="Enter ZIP code">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="country">Country</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="country" id="country" placeholder="Enter country">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-9">
-            <div class="btn-group btn-group-justified">
-              <div class="btn-group">
-                <button class="btn btn-default">Update</button>
-              </div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default" ng-click="returnHome()">Cancel</button>
-              </div>
-              <div class="btn-group">
-                <button ng-disabled="submitted !== true" type="button" class="btn btn-default" ng-click="returnHome()">Back</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-9">
-            <div class="alert alert-success" ng-show="updated === true">
-              <strong>Success!</strong> User updated.
-            </div>
-            <div class="alert alert-danger" ng-show="updated === false">
-              <strong>Failure!</strong> User not updated.
-            </div>
-          </div>
-        </div>
-      </form>
+  <form role="form" class="form-horizontal" ng-submit="updateUser()">
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="firstName">First name</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter first name">
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="lastName">Last name</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="lastName" id="lastName" placeholder="Enter last name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="email">Email</label>
+      <div class="col-sm-7">
+        <input type="email" class="form-control" ng-model="email" id="email" placeholder="Enter email address">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="password">Password</label>
+      <div class="col-sm-7">
+        <input type="password" class="form-control" ng-model="password" id="password" placeholder="Enter new password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="phone">Phone</label>
+      <div class="col-sm-7">
+        <input type="tel" class="form-control" ng-model="phone" id="phone" placeholder="Enter phone number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="street1">Address Line 1</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="street1" id="street1" placeholder="Enter street address, P.O. box, C/O">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="street2">Address Line 2</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="street2" id="street2" placeholder="Enter apartment, suite, unit, building, floor, etc">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label" for="zip">ZIP Code</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="zip" id="zip" placeholder="Enter ZIP code">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-7">
+        <div class="btn-group btn-group-justified">
+          <div class="btn-group">
+            <button class="btn btn-default">Update</button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="returnHome()">Cancel</button>
+          </div>
+          <div class="btn-group">
+            <button ng-disabled="submitted !== true" type="button" class="btn btn-default" ng-click="returnHome()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-7">
+        <div class="alert alert-success" ng-show="updated === true">
+          <strong>Success!</strong> User updated.
+        </div>
+        <div class="alert alert-danger" ng-show="updated === false">
+          <strong>Failure!</strong> User not updated.
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

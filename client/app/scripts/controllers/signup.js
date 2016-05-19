@@ -14,6 +14,8 @@ angular.module('app')
       $scope.createUser = function() {
         // Go to dashboard
         $location.path('/dashboard');
+        $rootScope.loggedIn = true;
+        $rootScope.homeURL = '/dashboard';
       };
     }
   ]);

@@ -8,8 +8,8 @@
  * 
  */
 angular.module('app')
-  .controller('AddDeviceCtrl', ['$scope', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $cookies, $http, $rootScope, serverURL) {
+  .controller('AddDeviceCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope', 'serverURL',
+    function($scope, $location, $cookies, $http, $rootScope, serverURL) {
       // Set the default sort type
       $scope.sortType = 'index';
       // Set the default sort order
@@ -18,29 +18,36 @@ angular.module('app')
       $scope.searchDevice = '';
 
       // Handles registration of devices on click event
-      $scope.registerDevice = function(deviceId) {
-        $http.put(serverURL + '/devices/register/' + deviceId, { registered: true })
-          .success(function() {
-            // Remove the device from the view
-            // Find the location of the item
-            // Required to support filtering/sorting
-            var index = 0;
-            for (var i = 0; i < $scope.items.length; i++) {
-              // If item exist, then guaranteed to have id field
-              if ($scope.items[i]._id === deviceId) {
-                index = i;
-                break;
-              }
-            }
-            $scope.items.splice(index, 1);
-            // Clear the search filter
-            $scope.searchDevice = '';
-            // Show success notification
-            $scope.updated = true;
-          })
-          .error(function() {
-            $scope.updated = false;
+      $scope.customizeDevice = function(deviceId) {
+
+        $http.get(serverURL + '/devices/' + deviceId)
+          .success(function(response) {
+            $rootScope.deviceToUpdate = response;
+            $location.path('/mydevices/add/customize');
           });
+
+        // $http.put(serverURL + '/devices/register/' + deviceId, { registered: true })
+        //   .success(function() {
+        //     // Remove the device from the view
+        //     // Find the location of the item
+        //     // Required to support filtering/sorting
+        //     var index = 0;
+        //     for (var i = 0; i < $scope.items.length; i++) {
+        //       // If item exist, then guaranteed to have id field
+        //       if ($scope.items[i]._id === deviceId) {
+        //         index = i;
+        //         break;
+        //       }
+        //     }
+        //     $scope.items.splice(index, 1);
+        //     // Clear the search filter
+        //     $scope.searchDevice = '';
+        //     // Show success notification
+        //     $scope.updated = true;
+        //   })
+        //   .error(function() {
+        //     $scope.updated = false;
+        //   });
       };
 
       // Get current user from session variable

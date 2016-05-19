@@ -22,7 +22,6 @@ angular.module('app')
             $scope.street2 = response.street2;
             $scope.state = response.state;
             $scope.zip = response.zip;
-            $scope.country = response.country;
             $scope.phone = response.phone;
             $scope.password = response.password; // Required
           });

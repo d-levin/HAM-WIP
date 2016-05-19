@@ -29,7 +29,7 @@
         <td>{{item.description}}</td>
         <td>{{item.location}}</td>
         <td>
-          <input type="checkbox" ng-model="power" ng-change="change(item._id)"></input>
+          <input type="checkbox" ng-model="item.toggled" ng-checked="item.toggled" ng-change="change(item._id)"></input>
         </td>
         <td><span class="glyphicon glyphicon-remove" ng-click="unregDevice(item._id)"></span></td>
       </tr>

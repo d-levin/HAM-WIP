@@ -8,6 +8,11 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('SubscriptionCtrl', function() {
+  .controller('SubscriptionCtrl', ['$scope', '$rootScope',
+    function($scope, $rootScope) {
 
-  });
+      $scope.onInit = function() {
+        $rootScope.currentView = 'Manage Subscription';
+      };
+    }
+  ]);

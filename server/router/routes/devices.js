@@ -18,7 +18,8 @@ router.post('/', function(req, res) {
   device.location = (req.body.location === undefined) ? '' : req.body.location;
   device.type = (req.body.type === undefined) ? '' : req.body.type;
   device.uri = (req.body.uri === undefined) ? '' : req.body.uri;
-  device.registered = false; // Initial status
+  device.registered = false;
+  device.toggled = false;
   device.controllerId = req.body.controllerId;
 
   // Save the Device
@@ -47,6 +48,18 @@ router.get(deviceIdRoute, function(req, res) {
       return res.send(err);
     }
     res.json(device);
+  });
+});
+
+// Turn device on/off
+router.put('/:deviceId/toggle', function(req, res) {
+  // With option to return the updated object
+  Device.findByIdAndUpdate(req.params.deviceId, { toggled: req.params.toggle }, { new: true }, function(err, post) {
+    if (err) {
+      return res.send(err);
+    }
+    // Send the updated device
+    res.json(post);
   });
 });
 

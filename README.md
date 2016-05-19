@@ -46,6 +46,7 @@ GET | /controllers/byuser/:userId | Retrieve all controllers mapped to the speci
 GET | /devices/ | Retrieves all devices | JSON object
 GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
 PUT | /devices/:deviceId | Updates device with specified ID | 
+PUT | /devices/:deviceId/toggle | Toggles device on/off | 
 PUT | /devices/register/:deviceId | Marks device with specified ID as registered | The updated JSON object
 PUT | /devices/unregister/:deviceId | Marks device with specified ID as unregistered | The updated JSON object
 DELETE | /devices/:deviceId | Delete device with specified ID |

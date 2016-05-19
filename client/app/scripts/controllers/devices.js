@@ -5,7 +5,7 @@
  * @name app.controller:DeviceCtrl
  * @description
  * # DeviceCtrl
- * 
+ *
  */
 angular.module('app')
   .controller('DeviceCtrl', ['$scope', '$cookies', '$http', '$log', '$rootScope', 'serverURL',
@@ -18,12 +18,21 @@ angular.module('app')
       $scope.searchDevice = '';
 
       // Manages the on/off events for devices
-      $scope.change = function(data) {
-        // Call backend route here 
+      $scope.change = function(deviceId) {
+        // Call backend route here
         // connecting to Raspberry Pi
         // and turning off/on device
-        $log.info('Changing device id: ' + data);
-        //alert('call status change: ' + data);
+        $http.get(serverURL + '/devices/' + deviceId)
+          .success(function(res) {
+            if (res) {
+              $http.put(serverURL + '/devices/' + deviceId, { toggled: !res.toggled })
+                .success(function(res) {
+                  if (res) {
+                    $log.info('toggled: ' + res.toggled);
+                  }
+                });
+            }
+          });
       };
 
       // Handles removal of devices on click event

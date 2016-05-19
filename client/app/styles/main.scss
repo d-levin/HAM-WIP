@@ -109,6 +109,13 @@ th a {
 
 /* Utility classes */
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex !important;
+}
+
 .bg-color {
   background-color: $dark-green !important;
 }
@@ -164,7 +171,8 @@ th a {
 =            Animations            =
 ==================================*/
 
-.ng-enter {
+.ng-enter,
+.fade {
   animation: fadeIn 0.8s linear;
   -webkit-animation: fadeIn 0.8s linear;
 }

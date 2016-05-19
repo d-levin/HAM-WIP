@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
   user.lastName = req.body.lastName;
   user.email = req.body.email;
   user.phone = (req.body.phone === undefined) ? '' : req.body.phone;
-  user.country = (req.body.country === undefined) ? '' : req.body.country;
+  user.premium = false;
   user.street1 = (req.body.street1 === undefined) ? '' : req.body.street1;
   user.street2 = (req.body.street2 === undefined) ? '' : req.body.street2;
   user.state = (req.body.state === undefined) ? '' : req.body.state;

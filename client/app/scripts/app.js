@@ -39,11 +39,6 @@ angular
         controller: 'DashboardCtrl',
         controllerAs: 'dashboard'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
       .when('/mycontrollers', {
         templateUrl: 'views/controllers.html',
         controller: 'ControllerCtrl',
@@ -58,6 +53,11 @@ angular
         templateUrl: 'views/add-devices.html',
         controller: 'AddDeviceCtrl',
         controllerAs: 'add-devices'
+      })
+      .when('/mydevices/add/customize', {
+        templateUrl: 'views/customize-device.html',
+        controller: 'CustomizeDeviceCtrl',
+        controllerAs: 'customize-device'
       })
       .when('/mysubscription', {
         templateUrl: 'views/subscription.html',

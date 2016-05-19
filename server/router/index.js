@@ -6,4 +6,4 @@ module.exports = function(app) {
   app.use('/devices', require('./routes/devices'));
   app.use('/devicebindings', require('./routes/devicebindings'));
   app.use('/controllerbindings', require('./routes/controllerbindings'));
-}
+};
