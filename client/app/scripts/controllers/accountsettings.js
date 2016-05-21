@@ -8,12 +8,12 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('AccountSettingsCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $location, $cookies, $http, $rootScope, serverURL) {
+  .controller('AccountSettingsCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope',
+    function($scope, $location, $cookies, $http, $rootScope) {
 
       $scope.onInit = function() {
         $rootScope.currentView = 'Account Settings';
-        $http.get(serverURL + '/users/' + $cookies.get('userId'))
+        $http.get('/users/' + $cookies.get('userId'))
           .success(function(response) {
             $scope.firstName = response.firstName; // Required
             $scope.lastName = response.lastName; // Required
@@ -49,7 +49,7 @@ angular.module('app')
             'Content-Type': 'application/x-www-form-urlencoded'
           }
         };
-        $http.put(serverURL + '/users/' + $cookies.get('userId'), params, config)
+        $http.put('/users/' + $cookies.get('userId'), params, config)
           .success(function() {
             $scope.updated = true;
             $scope.submitted = true;

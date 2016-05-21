@@ -8,8 +8,8 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('CustomizeDeviceCtrl', ['$scope', '$log', '$timeout', '$location', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $log, $timeout, $location, $cookies, $http, $rootScope, serverURL) {
+  .controller('CustomizeDeviceCtrl', ['$scope', '$log', '$timeout', '$location', '$cookies', '$http', '$rootScope',
+    function($scope, $log, $timeout, $location, $cookies, $http, $rootScope) {
 
       $scope.onInit = function() {
         $rootScope.currentView = 'Customize Device';
@@ -38,7 +38,7 @@ angular.module('app')
             'Content-Type': 'application/x-www-form-urlencoded'
           }
         };
-        $http.put(serverURL + '/devices/' + $scope.deviceId, params, config)
+        $http.put('/devices/' + $scope.deviceId, params, config)
           .success(function() {
             $scope.updated = true;
             $scope.deviceAdded = true;

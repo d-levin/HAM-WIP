@@ -9,6 +9,7 @@
 * Build client using 'grunt' from the HAM-WIP/client directory
 	* Builds the app to /server/dist/
 * Run client using 'grunt serve' from the HAM-WIP/client directory to preview on port 9000
+* Azure 'git push azure master'
 
 #### MongoDB
 * The app connects to a free MongoDB at [mLab](https://mlab.com)
@@ -18,10 +19,10 @@
 * Because a free low-performance database is used, there is a slight delay when retrieving data in the app
 
 #### Features
-* Go to http://localhost:8080 to load the Angular version of the app
+* Go to http://localhost:3000 to load the Angular version of the app
 	* Loads the website from /server/dist/
 	* Update the files in dist first by running 'grunt' from /client/
-* To load the non-Angular admin CRUD page, go to http://localhost:8080/admin
+* To load the non-Angular admin CRUD page, go to http://localhost:3000/admin
 
 #### Misc
 * Try GET/POST/PUT/DELETE requests by using something like [Postman](https://www.getpostman.com). Make sure to select x-www-form-urlencoded for the request body.

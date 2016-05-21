@@ -8,8 +8,8 @@
  *
  */
 angular.module('app')
-  .controller('DeviceCtrl', ['$scope', '$cookies', '$http', '$log', '$rootScope', 'serverURL',
-    function($scope, $cookies, $http, $log, $rootScope, serverURL) {
+  .controller('DeviceCtrl', ['$scope', '$cookies', '$http', '$log', '$rootScope',
+    function($scope, $cookies, $http, $log, $rootScope) {
       // Set the default sort type
       $scope.sortType = 'index';
       // Set the default sort order
@@ -22,10 +22,10 @@ angular.module('app')
         // Call backend route here
         // connecting to Raspberry Pi
         // and turning off/on device
-        $http.get(serverURL + '/devices/' + deviceId)
+        $http.get('/devices/' + deviceId)
           .success(function(res) {
             if (res) {
-              $http.put(serverURL + '/devices/' + deviceId, { toggled: !res.toggled })
+              $http.put('/devices/' + deviceId, { toggled: !res.toggled })
                 .success(function(res) {
                   if (res) {
                     $log.info('toggled: ' + res.toggled);
@@ -37,7 +37,7 @@ angular.module('app')
 
       // Handles removal of devices on click event
       $scope.unregDevice = function(deviceId) {
-        $http.put(serverURL + '/devices/unregister/' + deviceId)
+        $http.put('/devices/unregister/' + deviceId)
           .success(function() {
             // Remove the device from the view
             // Find the location of the item
@@ -64,12 +64,12 @@ angular.module('app')
       $scope.onInit = function() {
         $rootScope.currentView = 'Manage Devices';
         // Get current user from session variable
-        $http.get(serverURL + '/users/' + $cookies.get('userId'))
+        $http.get('/users/' + $cookies.get('userId'))
           .success(function(response1) {
             // User is guaranteed to have the controllers member
             var controllers = response1.controllers;
             if (controllers && controllers.length > 0) {
-              $http.get(serverURL + '/controllers/')
+              $http.get('/controllers/')
                 .success(function(response2) {
                   var results = [];
                   var i = 0;
@@ -96,7 +96,7 @@ angular.module('app')
 
                   // Get all devices then filter
                   if (devices.length > 0) {
-                    $http.get(serverURL + '/devices')
+                    $http.get('/devices')
                       .success(function(response3) {
                         var finalResult = [];
                         var indexCounter = 1;

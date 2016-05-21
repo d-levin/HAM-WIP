@@ -8,8 +8,8 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('SignInCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $location, $cookies, $http, $rootScope, serverURL) {
+  .controller('SignInCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope',
+    function($scope, $location, $cookies, $http, $rootScope) {
       $rootScope.homeURL = '/';
       $rootScope.currentView = 'Sign In';
       $rootScope.loggedIn = false;
@@ -19,7 +19,7 @@ angular.module('app')
         // Validate input here
         // if ($scope.userForm.$valid) {
         if (1) {
-          $http.get(serverURL + '/users/username/' + $scope.user.username)
+          $http.get('/users/username/' + $scope.user.username)
             .success(function(response) {
               if (response) {
                 $rootScope.username = response.email;

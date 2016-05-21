@@ -1,18 +1,19 @@
 /* Connection to MongoDB */
 
 var mongoose = require('mongoose');
+var config = require('../config/config');
 
-// String after port specifies which db to use on the given server
-var connectionString = 'mongodb://localhost:27017/ham-wip';
-// var dbuser = 'dbuser';
-// var dbpassword = 'dbpassword';
-// var connectionString = 'mongodb://' + dbuser + ':' + dbpassword + '@ds019101.mlab.com:19101/ham-wip';
+var db_options = {
+  server: {
+    poolSize: 10
+  }
+};
 
-mongoose.connect(connectionString, function(err) {
+mongoose.connect(config.db, db_options, function(err) {
   if (err) {
     console.log('Mongoose connection failed');
   } else {
-    console.log('Mongoose connected to ' + connectionString);
+    console.log('Mongoose connected to ' + config.db);
   }
 });
 

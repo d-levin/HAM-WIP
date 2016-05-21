@@ -8,8 +8,8 @@
  * 
  */
 angular.module('app')
-  .controller('AddDeviceCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $location, $cookies, $http, $rootScope, serverURL) {
+  .controller('AddDeviceCtrl', ['$scope', '$location', '$cookies', '$http', '$rootScope',
+    function($scope, $location, $cookies, $http, $rootScope) {
       // Set the default sort type
       $scope.sortType = 'index';
       // Set the default sort order
@@ -20,45 +20,22 @@ angular.module('app')
       // Handles registration of devices on click event
       $scope.customizeDevice = function(deviceId) {
 
-        $http.get(serverURL + '/devices/' + deviceId)
+        $http.get('/devices/' + deviceId)
           .success(function(response) {
             $rootScope.deviceToUpdate = response;
             $location.path('/mydevices/add/customize');
           });
-
-        // $http.put(serverURL + '/devices/register/' + deviceId, { registered: true })
-        //   .success(function() {
-        //     // Remove the device from the view
-        //     // Find the location of the item
-        //     // Required to support filtering/sorting
-        //     var index = 0;
-        //     for (var i = 0; i < $scope.items.length; i++) {
-        //       // If item exist, then guaranteed to have id field
-        //       if ($scope.items[i]._id === deviceId) {
-        //         index = i;
-        //         break;
-        //       }
-        //     }
-        //     $scope.items.splice(index, 1);
-        //     // Clear the search filter
-        //     $scope.searchDevice = '';
-        //     // Show success notification
-        //     $scope.updated = true;
-        //   })
-        //   .error(function() {
-        //     $scope.updated = false;
-        //   });
       };
 
       // Get current user from session variable
       $scope.onInit = function() {
         $rootScope.currentView = 'Add Devices';
-        $http.get(serverURL + '/users/' + $cookies.get('userId'))
+        $http.get('/users/' + $cookies.get('userId'))
           .success(function(response1) {
             // User is guaranteed to have the controllers member
             var controllers = response1.controllers;
             if (controllers.length > 0) {
-              $http.get(serverURL + '/controllers/')
+              $http.get('/controllers/')
                 .success(function(response2) {
                   var results = [];
                   var i = 0;
@@ -85,7 +62,7 @@ angular.module('app')
 
                   // Get all devices then filter
                   if (devices.length > 0) {
-                    $http.get(serverURL + '/devices')
+                    $http.get('/devices')
                       .success(function(response3) {
                         var finalResult = [];
                         var indexCounter = 1;

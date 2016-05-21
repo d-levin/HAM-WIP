@@ -10,12 +10,12 @@
  * of the results in $scope
  */
 angular.module('app')
-  .controller('ControllerCtrl', ['$scope', '$cookies', '$http', '$rootScope', 'serverURL',
-    function($scope, $cookies, $http, $rootScope, serverURL) {
+  .controller('ControllerCtrl', ['$scope', '$cookies', '$http', '$rootScope',
+    function($scope, $cookies, $http, $rootScope) {
       $scope.onInit = function() {
         $rootScope.currentView = 'Controllers';
         // Get current user from session variable
-        $http.get(serverURL + '/controllers/byuser/' + $cookies.get('userId'))
+        $http.get('/controllers/byuser/' + $cookies.get('userId'))
           .success(function(response) {
             for (var i = 0; i < response.length; i++) {
               response[i].controllerNum = (i + 1);

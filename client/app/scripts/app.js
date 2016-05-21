@@ -19,7 +19,6 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .constant('serverURL', 'http://localhost:8080')
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
     // Routes must not have same names as backend express routes

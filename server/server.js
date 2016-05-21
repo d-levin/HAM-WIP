@@ -4,10 +4,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var cors = require('cors');
 var db = require('./database');
+var config = require('./config/config');
 
 /*----------  Setup App  ----------*/
 var app = express();
-var port = process.env.PORT || 8080;
 
 // Allow cross origin requests
 // i.e. requests from outside domains
@@ -31,6 +31,6 @@ app.all('/*', function(req, res) {
 });
 
 /* Start the server */
-app.listen(port, function() {
-  console.log('Listening on port ' + port);
+app.listen(config.port, function() {
+  console.log('Listening on port ' + config.port);
 });
