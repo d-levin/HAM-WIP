@@ -1,4 +1,5 @@
 // Bind button events
+
 document.addEventListener('DOMContentLoaded', function() {
   // User events
   var element = document.getElementById('getusers-btn');
@@ -7,15 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   element = document.getElementById('createuser-btn');
   element.addEventListener('click', function() {
-    createUser()
+    createUser();
   });
   element = document.getElementById('updateuser-btn');
   element.addEventListener('click', function() {
-    updateUser()
+    updateUser();
   });
   element = document.getElementById('deleteuser-btn');
   element.addEventListener('click', function() {
-    deleteUser()
+    deleteUser();
   });
 
   // Controller events
@@ -25,15 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   element = document.getElementById('createcontroller-btn');
   element.addEventListener('click', function() {
-    createController()
+    createController();
   });
   element = document.getElementById('updatecontroller-btn');
   element.addEventListener('click', function() {
-    updateController()
+    updateController();
   });
   element = document.getElementById('deletecontroller-btn');
   element.addEventListener('click', function() {
-    deleteController()
+    deleteController();
   });
 
   // Device events
@@ -43,15 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   element = document.getElementById('createdevice-btn');
   element.addEventListener('click', function() {
-    createDevice()
+    createDevice();
   });
   element = document.getElementById('updatedevice-btn');
   element.addEventListener('click', function() {
-    updateDevice()
+    updateDevice();
   });
   element = document.getElementById('deletedevice-btn');
   element.addEventListener('click', function() {
-    deleteDevice()
+    deleteDevice();
   });
 
 });
@@ -64,10 +65,10 @@ function getData(path) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       listItems(xmlhttp.responseText, path);
     }
-  }
-  xmlhttp.open("GET", url, true);
+  };
+  xmlhttp.open("GET", "/" + url, true);
   xmlhttp.send();
-};
+}
 
 // Populates the form
 function listItems(response, path) {
@@ -78,11 +79,11 @@ function listItems(response, path) {
     out += "<tr>";
 
     if (path === "users") {
-      out += "<th onclick=\"getUserById(this)\" data=\"" + obj[i]['_id'] + "\">Item " + (i + 1) + ":</th></tr>";
+      out += "<th onclick=\"getUserById(this)\" data=\"" + obj[i]._id + "\">Item " + (i + 1) + ":</th></tr>";
     } else if (path === "controllers") {
-      out += "<th onclick=\"getControllerById(this)\" data=\"" + obj[i]['_id'] + "\">Item " + (i + 1) + ":</th></tr>";
+      out += "<th onclick=\"getControllerById(this)\" data=\"" + obj[i]._id + "\">Item " + (i + 1) + ":</th></tr>";
     } else if (path === "devices") {
-      out += "<th onclick=\"getDeviceById(this)\" data=\"" + obj[i]['_id'] + "\">Item " + (i + 1) + ":</th></tr>";
+      out += "<th onclick=\"getDeviceById(this)\" data=\"" + obj[i]._id + "\">Item " + (i + 1) + ":</th></tr>";
     }
 
     for (var key in obj[i]) {
@@ -94,7 +95,7 @@ function listItems(response, path) {
   }
   out += "</table>";
   document.getElementById("results-container-" + path).innerHTML = out;
-};
+}
 
 /*==================================
 =            User logic            =
@@ -109,39 +110,39 @@ function getUserById(element) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       populateUserForm(xmlhttp.responseText);
     }
-  }
-  xmlhttp.open("GET", url, true);
+  };
+  xmlhttp.open("GET", "/" + url, true);
   xmlhttp.send();
-};
+}
 
 // Parses a response object into the form
 function populateUserForm(response) {
   var obj = JSON.parse(response);
-  if (obj == null) return;
+  if (obj === null) return;
 
   // Clear all fields first
   clearUserForm();
 
   // Populate the fields unless undefined
-  if (obj['firstName'] || '') {
-    document.getElementsByName('firstName')[0].value = obj['firstName'];
+  if (obj.firstName || '') {
+    document.getElementsByName('firstName')[0].value = obj.firstName;
   }
-  if (obj['lastName'] || '') {
-    document.getElementsByName('lastName')[0].value = obj['lastName'];
+  if (obj.lastName || '') {
+    document.getElementsByName('lastName')[0].value = obj.lastName;
   }
-  if (obj['email'] || '') {
-    document.getElementsByName('email')[0].value = obj['email'];
+  if (obj.email || '') {
+    document.getElementsByName('email')[0].value = obj.email;
   }
-  if (obj['password'] || '') {
-    document.getElementsByName('password')[0].value = obj['password'];
+  if (obj.password || '') {
+    document.getElementsByName('password')[0].value = obj.password;
   }
-  if (obj['phone'] || '') {
-    document.getElementsByName('phone')[0].value = obj['phone'];
+  if (obj.phone || '') {
+    document.getElementsByName('phone')[0].value = obj.phone;
   }
 
   // Save the ID for future operations
-  document.getElementById('users-block').setAttribute('data', obj['_id']);
-};
+  document.getElementById('users-block').setAttribute('data', obj._id);
+}
 
 // Clears the input boxes
 function clearUserForm() {
@@ -172,7 +173,7 @@ function createUser() {
     params += 'password=' + document.getElementsByName('password')[0].value.trim();
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", 'users/', true);
+    xmlhttp.open("POST", '/users/', true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
     alert('User created!');
@@ -181,7 +182,7 @@ function createUser() {
   } else {
     alert('All fields are mandatory!');
   }
-};
+}
 
 function updateUser() {
   var id = document.getElementById('users-block').getAttribute('data');
@@ -197,12 +198,12 @@ function updateUser() {
   params += 'password=' + document.getElementsByName('password')[0].value.trim();
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("PUT", 'users/' + id, true);
+  xmlhttp.open("PUT", '/users/' + id, true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(params);
   alert('User updated!');
   clearUserResults();
-};
+}
 
 function deleteUser() {
   var id = document.getElementById('users-block').getAttribute('data');
@@ -212,12 +213,12 @@ function deleteUser() {
   }
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("DELETE", 'users/' + id, true);
+  xmlhttp.open("DELETE", '/users/' + id, true);
   xmlhttp.send();
   alert('User deleted!');
   clearUserForm();
   clearUserResults();
-};
+}
 
 /*=====  End of User logic  ======*/
 
@@ -234,33 +235,33 @@ function getControllerById(element) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       populateControllerForm(xmlhttp.responseText);
     }
-  }
-  xmlhttp.open("GET", url, true);
+  };
+  xmlhttp.open("GET", "/" + url, true);
   xmlhttp.send();
-};
+}
 
 // Parses a response object into the form
 function populateControllerForm(response) {
   var obj = JSON.parse(response);
-  if (obj == null) return;
+  if (obj === null) return;
 
   // Clear all fields first
   clearControllerForm();
 
   // Populate the fields unless undefined
-  if (obj['make'] || '') {
-    document.getElementsByName('make')[0].value = obj['make'];
+  if (obj.make || '') {
+    document.getElementsByName('make')[0].value = obj.make;
   }
-  if (obj['model'] || '') {
-    document.getElementsByName('model')[0].value = obj['model'];
+  if (obj.model || '') {
+    document.getElementsByName('model')[0].value = obj.model;
   }
-  if (obj['version'] || '') {
-    document.getElementsByName('version')[0].value = obj['version'];
+  if (obj.version || '') {
+    document.getElementsByName('version')[0].value = obj.version;
   }
 
   // Save the ID for future operations
-  document.getElementById('controllers-block').setAttribute('data', obj['_id']);
-};
+  document.getElementById('controllers-block').setAttribute('data', obj._id);
+}
 
 // Clears the input boxes
 function clearControllerForm() {
@@ -287,7 +288,7 @@ function createController() {
     params += 'version=' + document.getElementsByName('version')[0].value.trim();
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", 'controllers/', true);
+    xmlhttp.open("POST", '/controllers/', true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
     alert('Controller created!');
@@ -296,7 +297,7 @@ function createController() {
   } else {
     alert('All fields are mandatory!');
   }
-};
+}
 
 function updateController() {
   var id = document.getElementById('controllers-block').getAttribute('data');
@@ -310,12 +311,12 @@ function updateController() {
   params += 'version=' + document.getElementsByName('version')[0].value.trim();
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("PUT", 'controllers/' + id, true);
+  xmlhttp.open("PUT", '/controllers/' + id, true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(params);
   alert('Controller updated!');
   clearControllerResults();
-};
+}
 
 function deleteController() {
   var id = document.getElementById('controllers-block').getAttribute('data');
@@ -325,12 +326,12 @@ function deleteController() {
   }
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("DELETE", 'controllers/' + id, true);
+  xmlhttp.open("DELETE", '/controllers/' + id, true);
   xmlhttp.send();
   alert('Controller deleted!');
   clearControllerForm();
   clearControllerResults();
-};
+}
 
 /*=====  End of Controller logic  ======*/
 
@@ -347,36 +348,36 @@ function getDeviceById(element) {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       populateDeviceForm(xmlhttp.responseText);
     }
-  }
-  xmlhttp.open("GET", url, true);
+  };
+  xmlhttp.open("GET", "/" + url, true);
   xmlhttp.send();
-};
+}
 
 // Parses a response object into the form
 function populateDeviceForm(response) {
   var obj = JSON.parse(response);
-  if (obj == null) return;
+  if (obj === null) return;
 
   // Clear all fields first
   clearDeviceForm();
 
   // Populate the fields unless undefined
-  if (obj['name'] || '') {
-    document.getElementsByName('name')[0].value = obj['name'];
+  if (obj.name || '') {
+    document.getElementsByName('name')[0].value = obj.name;
   }
-  if (obj['description'] || '') {
-    document.getElementsByName('description')[0].value = obj['description'];
+  if (obj.description || '') {
+    document.getElementsByName('description')[0].value = obj.description;
   }
-  if (obj['location'] || '') {
-    document.getElementsByName('location')[0].value = obj['location'];
+  if (obj.location || '') {
+    document.getElementsByName('location')[0].value = obj.location;
   }
-  if (obj['type'] || '') {
-    document.getElementsByName('type')[0].value = obj['type'];
+  if (obj.type || '') {
+    document.getElementsByName('type')[0].value = obj.type;
   }
 
   // Save the ID for future operations
-  document.getElementById('devices-block').setAttribute('data', obj['_id']);
-};
+  document.getElementById('devices-block').setAttribute('data', obj._id);
+}
 
 // Clears the input boxes
 function clearDeviceForm() {
@@ -405,7 +406,7 @@ function createDevice() {
     params += 'type=' + document.getElementsByName('type')[0].value.trim();
 
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", 'devices/', true);
+    xmlhttp.open("POST", '/devices/', true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
     alert('Device created!');
@@ -414,7 +415,7 @@ function createDevice() {
   } else {
     alert('All fields are mandatory!');
   }
-};
+}
 
 function updateDevice() {
   var id = document.getElementById('devices-block').getAttribute('data');
@@ -429,12 +430,12 @@ function updateDevice() {
   params += 'type=' + document.getElementsByName('type')[0].value.trim();
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("PUT", 'devices/' + id, true);
+  xmlhttp.open("PUT", '/devices/' + id, true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(params);
   alert('Device updated!');
   clearDeviceResults();
-};
+}
 
 function deleteDevice() {
   var id = document.getElementById('devices-block').getAttribute('data');
@@ -444,11 +445,11 @@ function deleteDevice() {
   }
 
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("DELETE", 'devices/' + id, true);
+  xmlhttp.open("DELETE", '/devices/' + id, true);
   xmlhttp.send();
   alert('Device deleted!');
   clearDeviceForm();
   clearDeviceResults();
-};
+}
 
 /*=====  End of Device logic  ======*/

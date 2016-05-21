@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "test": "./node_modules/mocha/bin/mocha ./test/"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "gulp": "3.9.1",
-    "gulp-sass": "2.3.1"
+    "gulp-sass": "2.3.1",
+    "mocha": "2.4.5",
+    "supertest": "1.2.0"
   }
 }

@@ -5,7 +5,8 @@
 * cd client && npm install && bower install
 
 #### Directions:
-* Run server using 'npm start' from the HAM-WIP directory
+* Run server using 'npm start' from the HAM-WIP/server directory
+* Run tests using 'npm test' from the HAM-WIP/server directory
 * Build client using 'grunt' from the HAM-WIP/client directory
 	* Builds the app to /server/dist/
 * Run client using 'grunt serve' from the HAM-WIP/client directory to preview on port 9000
