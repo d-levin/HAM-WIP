@@ -8,8 +8,8 @@ var config = {
     app: {
       name: 'express-seed'
     },
-    port: process.env.port || 3000,
-    db: 'mongodb://localhost/express-seed-development'
+    port: process.env.port || 8080,
+    db: 'mongodb://localhost/ham-wip'
   },
 
   test: {
@@ -17,8 +17,8 @@ var config = {
     app: {
       name: 'express-seed'
     },
-    port: process.env.port || 3000,
-    db: 'mongodb://localhost/express-seed-test'
+    port: process.env.port || 8080,
+    db: 'mongodb://localhost/ham-wip'
   },
 
   production: {
@@ -26,8 +26,8 @@ var config = {
     app: {
       name: 'express-seed'
     },
-    port: process.env.port || 3000,
-    db: 'mongodb://dbuser:dbpassword@ds019101.mlab.com:19101/ham-wip'
+    port: process.env.port || 8080,
+    db: 'mongodb://dbuser:dbpassword@ds036789.mlab.com:36789/hamwip-azure'
   }
 };
 
