@@ -116,6 +116,10 @@ th a {
   display: flex !important;
 }
 
+.pointer:hover {
+  cursor: pointer;
+}
+
 .bg-color {
   background-color: $dark-green !important;
 }
@@ -164,6 +168,11 @@ th a {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
+}
+
+.ad-container {
+  text-align: center;
+  padding-bottom: 1em;
 }
 
 

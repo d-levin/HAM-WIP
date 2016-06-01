@@ -7,6 +7,7 @@ var controllerSchema = new Schema({
   make: { type: String, required: true },
   model: String,
   version: Number,
+  uri: String,
   devices: [{
     type: Schema.ObjectId,
     ref: 'Device',

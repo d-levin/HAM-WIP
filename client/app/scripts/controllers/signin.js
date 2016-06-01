@@ -25,6 +25,7 @@ angular.module('app')
                 $rootScope.username = response.email;
                 $rootScope.email = response.email;
                 $rootScope.firstName = response.firstName;
+                $rootScope.premium = response.premium;
                 $rootScope.loggedIn = true;
                 $rootScope.homeURL = '/dashboard';
                 // Store user info in cookie

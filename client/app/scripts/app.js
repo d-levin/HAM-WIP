@@ -43,6 +43,11 @@ angular
         controller: 'ControllerCtrl',
         controllerAs: 'controllers'
       })
+      .when('/mycontrollers/add', {
+        templateUrl: 'views/add-controllers.html',
+        controller: 'AddControllerCtrl',
+        controllerAs: 'add-controllers'
+      })
       .when('/mydevices', {
         templateUrl: 'views/devices.html',
         controller: 'DeviceCtrl',

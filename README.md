@@ -45,6 +45,7 @@ PUT | /controllers/:controllerId | Update controller with specified ID |
 DELETE | /controllers/:controllerId | Delete controller with specified ID |
 POST | /controllers/ | Creates a new controller | 
 GET | /controllers/byuser/:userId | Retrieve all controllers mapped to the specified user | JSON object
+GET | /controllers/uri/:uri | Retrieve one controller by URI | JSON object
 GET | /devices/ | Retrieves all devices | JSON object
 GET | /devices/:deviceId | Retrieves device with specified ID | JSON object
 PUT | /devices/:deviceId | Updates device with specified ID | 

@@ -1,0 +1,24 @@
+<div class="container-fluid" ng-init="onInit()">
+  <div class="row">
+    <p>The Controller URI is located on the controller itself.</p>
+  </div>
+  <form role="form" ng-submit="addController(controllerURI)">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Enter controller URI" ng-model="controllerURI">
+        <span class="input-group-btn">
+        <button class="btn btn-default">Add Controller</button>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="alert alert-success" ng-show="updated !== null && updated === true">
+        <strong>Success!</strong> Controller registered. Redirecting...
+      </div>
+      <div class="alert alert-danger" ng-show="updated !== null && updated === false">
+        <strong>Failure!</strong> Controller not registered.
+      </div>
+    </div>
+  </form>
+</div>

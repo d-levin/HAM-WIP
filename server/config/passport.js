@@ -30,9 +30,10 @@ module.exports = function(passport) {
 
         // Determine if user account already exists
         // on account creation
-        User.findOne({ 'email': email }, function(err, user) {
+        User.findOne({ 'email': req.params.email }, function(err, user) {
           if (err) {
-            return done(err);
+            return res.send('user not found by email');
+            // return done(err);
           }
 
           // Redirect on existing user

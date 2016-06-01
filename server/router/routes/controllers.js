@@ -16,6 +16,7 @@ router.post('/', function(req, res) {
   controller.make = req.body.make;
   controller.model = (req.body.model === undefined) ? '' : req.body.model;
   controller.version = req.body.version;
+  controller.uri = req.body.uri;
   controller.userId = req.body.userId;
 
   // Save the Controller
@@ -54,6 +55,16 @@ router.get('/byuser/:userId', function(req, res) {
       return res.send(err);
     }
     res.json(controllers);
+  });
+});
+
+// Get controller by URI
+router.get('/uri/:uri', function(req, res) {
+  Controller.findOne({ 'uri': req.params.uri }, function(err, controller) {
+    if (err) {
+      return res.send(err);
+    }
+    res.json(controller);
   });
 });
 

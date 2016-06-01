@@ -1,5 +1,5 @@
 <div class="container-fluid" ng-init="onInit()">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped" ng-show="items !== null">
     <thead>
       <tr>
         <th><a href="" ng-click="sortType = 'index'; sortReverse = !sortReverse"># <span ng-show="sortType == 'index' && !sortReverse" class="fa fa-caret-up"></span>
@@ -10,6 +10,7 @@
           <span ng-show="sortType == 'model' && sortReverse" class="fa fa-caret-down"></span></a></th>
         <th><a href="" ng-click="sortType = 'version'; sortReverse = !sortReverse">Version <span ng-show="sortType == 'version' && !sortReverse" class="fa fa-caret-up"></span>
           <span ng-show="sortType == 'version' && sortReverse" class="fa fa-caret-down"></span></a></th>
+        <th>Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +19,17 @@
         <td>{{item.make}}</td>
         <td>{{item.model}}</td>
         <td>{{item.version}}</td>
+        <td><span class="glyphicon glyphicon-remove" ng-click="removeController(item._id)"></span></td>
       </tr>
     </tbody>
   </table>
+  <div class="alert alert-success" ng-show="updated === true">
+    <strong>Success!</strong> Controller removed.
+  </div>
+  <div class="alert alert-danger" ng-show="updated === false">
+    <strong>Failure!</strong> Controller not removed.
+  </div>
+  <div class="alert alert-warning" ng-show="items === null">
+    <strong>You have no controllers!</strong> Click <a ng-href class="pointer" ng-click="addController()"><strong>here</strong></a> to add a new controller.
+  </div>
 </div>
