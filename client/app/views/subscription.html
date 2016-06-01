@@ -1,3 +1,36 @@
 <div class="container-fluid" ng-init="onInit()">
+  <span ng-show="!premium">
   <p>Upgrade to a premium subscription to disable ads.</p>
+  <h2>$49.99 / year</h2>
+  <p>Take advantage of this limited offer for an ad-free experience!</p>
+  <p>A. TERMS OF SALE</p>
+  <p>PAYMENTS, TAXES, AND REFUND POLICY</p>
+  <p>You agree that you will pay for all products you purchase through the Services, and that HAMWIP may charge your payment method for any products purchased and for any additional amounts (including any taxes and late fees, as applicable) that may be accrued by or in connection with your Account. YOU ARE RESPONSIBLE FOR THE TIMELY PAYMENT OF ALL FEES AND FOR PROVIDING HAMWIP WITH A VALID PAYMENT METHOD FOR PAYMENT OF ALL FEES.</p>
+  <p>Your total price will include the price of the product plus any applicable tax; such tax is based on the bill-to address and the tax rate in effect at the time you download the product.</p>
+  <p>All sales and rentals of products are final.</p>
+  <p>Prices for products offered via the Services may change at any time, and the Services do not provide price protection or refunds in the event of a price reduction or promotional offering.</p>
+  <p>If a product becomes unavailable following a transaction but prior to download, your sole remedy is a refund. If technical problems prevent or unreasonably delay delivery of your product, your exclusive and sole remedy is either replacement or refund of the price paid, as determined by HAMWIP.</p>
+
+<p>By clicking Purchase I agree to the terms and conditions listed above</p>
+<div class="form-group">
+<div class="btn-group">
+<button class="btn btn-default" ng-click="purchase()">Purchase Membership</button>
+</div></div>
+</span>
+  <span ng-show="premium"><p>We value our customers. If you at any point want to cancel your premium membership, click the button below.</p>
+<p>HAMWIP will cancel your membership for free<sup>*</sup></p>
+<p><small><sup>*</sup>A convenience fee of $450 will be added to next month's bill</small></p>
+<div class="form-group">
+<div class="btn-group">
+<button class="btn btn-default" ng-click="cancel()">Cancel Membership</button>
+</div></div>
+</span>
+  <div class="form-group">
+    <div class="alert alert-success" ng-show="updated === true">
+      <strong>Success!</strong> Membership updated. Redirecting...
+    </div>
+    <div class="alert alert-danger" ng-show="updated === false">
+      <strong>Failure!</strong> Membership not updated.
+    </div>
+  </div>
 </div>
