@@ -73,6 +73,7 @@ angular
         controller: 'AccountSettingsCtrl',
         controllerAs: 'accountsettings'
       })
+      // Handle all other routes
       .otherwise({
         redirectTo: '/'
       });

@@ -1,11 +1,12 @@
-/* Authentication config */
+/* Authentication */
 
-var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 var User = require('../database/schemas/users');
+var auth = require('./auth');
 
 module.exports = function(passport) {
-  /* Serialization required for persistent login sessions */
+
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -16,42 +17,49 @@ module.exports = function(passport) {
     });
   });
 
-  /* Local accounts */
-  passport.use('local-signup', new LocalStrategy({
-      // Map username to email field
-      usernameField: 'email',
-      passwordField: 'password',
-      passReqToCallback: true // Allow passing entire request to callback
+  passport.use(new FacebookStrategy({
+      clientID: auth.facebook.id,
+      clientSecret: auth.facebook.secret,
+      callbackURL: auth.facebook.callbackURL,
+      profileFields: ['id', 'emails', 'name']
     },
-    function(req, email, password, done) {
-      // Asynchronous event
-      // User.findOne fires when data is sent back
+
+    // Facebook responds with token and profile
+    function(token, refreshToken, profile, done) {
+
       process.nextTick(function() {
 
-        // Determine if user account already exists
-        // on account creation
-        User.findOne({ 'email': req.params.email }, function(err, user) {
+        // Find the user based on FB id
+        User.findOne({ 'facebook.id': profile.id }, function(err, user) {
+
+          // Catch error
           if (err) {
-            return res.send('user not found by email');
-            // return done(err);
+            return done(err);
           }
 
-          // Redirect on existing user
+          // If user exists then log them in
           if (user) {
-            return done(null, false, req.redirect('/usernamealreadytaken'));
+            return done(null, user);
           } else {
-            // User DNE
-            // Create a new one
+            // Create user if not exists
             var newUser = new User();
 
-            // Setup credentials for the new user
-            newUser.email = email;
-            newUser.password = password;
+            // Build the user
+            newUser.facebook.id = profile.id;
+            newUser.facebook.token = token;
+            newUser.firstName = profile.name.givenName;
+            newUser.lastName = profile.name.familyName;
+            // Use the first email returned by FB
+            newUser.email = profile.emails[0].value;
+            // Password is required in user model
+            newUser.password = 'temp';
 
             newUser.save(function(err) {
               if (err) {
                 throw err;
               }
+
+              // Return the new user on success
               return done(null, newUser);
             });
           }

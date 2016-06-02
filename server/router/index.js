@@ -9,21 +9,43 @@ module.exports = function(app, passport) {
   app.use('/devicebindings', require('./routes/devicebindings'));
   app.use('/controllerbindings', require('./routes/controllerbindings'));
 
+  // Admin interface
+  // app.get('/admin', function(req, res) {
+  //   res.sendFile(path.join(__dirname, '../dist/admin/index.html'));
+  // });
+
+  /*======================================
+  =            Authentication            =
+  ======================================*/
+
+  // Send user to Facebook login
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+
+  // Handle callback after FB auth
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      failureRedirect: '/'
+    }),
+    function(req, res) {
+      res.redirect('/dashboard');
+    });
+
   // Sign out user
-  app.get('/logout', function(req, res) {
+  app.get('/auth/logout', function(req, res) {
     req.logout();
     res.redirect('/');
   });
 
-  // Authentication-based redirection
-  app.post('/api/signup', passport.authenticate('local-signup', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/signup'
-  }));
+  // Return the current user if authenticated
+  app.get('/auth/currentuser', isAuthenticated, function(req, res) {
+    res.json(req.user);
+  });
 
-  // Admin interface
-  app.get('/admin', function(req, res) {
-    res.sendFile(path.join(__dirname, '../dist/admin/index.html'));
+  /*=====  End of Authentication  ======*/
+
+  // Initial route
+  app.all('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
   });
 
   // Catch all other routes
@@ -32,10 +54,12 @@ module.exports = function(app, passport) {
   });
 };
 
-/* Authentication middleware */
-function isLoggedIn(req, res, next) {
+/* Middleware to check if user is logged in */
+function isAuthenticated(req, res, next) {
+  // Continue if logged in
   if (req.isAuthenticated()) {
-    return next;
+    return next();
   }
+  // Redirect if not
   res.redirect('/');
 }

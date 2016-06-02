@@ -6,3 +6,5 @@ server/database/data/journal/
 # Temp Files #
 ##############
 *~
+
+server/config/auth.js

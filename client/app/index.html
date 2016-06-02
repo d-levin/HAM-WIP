@@ -33,7 +33,7 @@
           <h1><a href="{{homeURL}}"><i id="logo" class="fa fa-home" aria-hidden="true"></i>HAM-WIP</a><span class="subtitle">Home Automation and Monitoring Web Interaction Portal</span></h1>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-show="loggedIn"><a ng-href="/signin" class="logout-link">Welcome, {{firstName}}! <span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          <li ng-show="loggedIn"><a href="/auth/logout" target="_self" class="logout-link">Welcome, {{loggedUser.firstName}}! <span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
         </ul>
       </div>
     </div>

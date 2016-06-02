@@ -10,6 +10,7 @@ var express = require('express'),
 
 /*  Setup App  */
 var app = express();
+require('./config/passport')(passport);
 
 /* Configure middleware */
 app.use(cors()); // Allow cross origin requests (requests from outside domains)
@@ -17,16 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/dist')));
 
-// For passport
+/* Authentication middleware */
 app.use(session({
-  secret: 'idontknowwhatwereyellingabout',
-  saveUninitialized: true,
-  resave: true
+  secret: 'canttouchthis',
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./config/passport')(passport);
-
 
 /* Initialize routes */
 routes = require('./router')(app, passport);

@@ -16,6 +16,10 @@ var userSchema = new Schema({
   zip: String,
   premium: Boolean,
   password: { type: String, required: true },
+  facebook: {
+    id: String,
+    token: String
+  },
   controllers: [{
     type: Schema.ObjectId,
     ref: 'Controller',
