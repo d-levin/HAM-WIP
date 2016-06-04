@@ -6,6 +6,7 @@ var router = express.Router();
 // Include schemas
 var db = require('../../database');
 var User = db.users;
+var Controller = db.controllers;
 
 // Routes
 var userIdRoute = '/:userId';
@@ -84,6 +85,16 @@ router.delete(userIdRoute, function(req, res) {
     if (err) {
       return res.send(err);
     }
+
+    // Notify the user's controllers
+    var controllers = post.controllers;
+    var query = { '_id': { $in: controllers } };
+    Controller.update(query, { $set: { 'userId': undefined } }, function(err, res) {
+      if (err) {
+        return res.send(err);
+      }
+    });
+
     // Send the deleted user
     res.json(post);
   });

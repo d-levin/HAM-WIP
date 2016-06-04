@@ -53,6 +53,13 @@ module.exports = function(passport) {
             newUser.email = profile.emails[0].value;
             // Password is required in user model
             newUser.password = 'temp';
+            // Set everything else to empty
+            newUser.phone = '';
+            newUser.street1 = '';
+            newUser.street2 = '';
+            newUser.state = '';
+            newUser.zip = '';
+            newUser.premium = false;
 
             newUser.save(function(err) {
               if (err) {
