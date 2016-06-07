@@ -2,7 +2,7 @@ var request = require('supertest');
 var assert = require('assert');
 
 var serverURL = 'http://hamwip.azurewebsites.net';
-var timeout = 7000;
+var timeout = 10000;
 
 describe('CONTROLLER ROUTES', function() {
   var id = '';

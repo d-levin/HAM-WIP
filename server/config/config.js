@@ -27,7 +27,7 @@ var config = {
       name: 'express-seed'
     },
     port: process.env.port || 8080,
-    db: 'mongodb://dbuser:dbpassword@ds036789.mlab.com:36789/hamwip-azure'
+    db: 'mongodb://thisismyuser:thisismypassword@ds036789.mlab.com:36789/hamwip-azure'
   }
 };
 
